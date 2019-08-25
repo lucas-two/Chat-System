@@ -1,10 +1,10 @@
 <nav class='navbar navbar-expand navbar-light bg-light'>
   <a class='navbar-brand'><img src="https://img.icons8.com/color/48/000000/chat.png"> Chat System</a>
   <ul class='nav nav-pills'>
-    <li><a class='nav-link' [routerLink]="['/home']">Home</a></li>
-    <li><a class='nav-link' *ngIf="LoginStatus()" [routerLink]="['/dashboard']">Dashboard</a></li>
     <li><a class='nav-link' *ngIf="LoginStatus()" [routerLink]="['/login']" (click)="LogOut()">Sign out</a></li>
     <li><a class='nav-link' *ngIf="!LoginStatus()" [routerLink]="['/login']">Sign in</a></li>
+    <li><a class='nav-link' [routerLink]="['/home']">Home</a></li>
+    <li><a class='nav-link' *ngIf="LoginStatus()" [routerLink]="['/dashboard']">Dashboard</a></li>
   </ul>
 </nav>
 <div class="container">
