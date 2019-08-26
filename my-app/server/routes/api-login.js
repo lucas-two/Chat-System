@@ -25,6 +25,7 @@ module.exports = (app) => {
     console.log(req.body.userEmail); // DEBUGGING ONLY
 
     if (req.body.userEmail == users['users'][i].email && req.body.userPwd == users['users'][i].pwd){
+
       customer.valid = true;
       customer.email = users['users'][i].email;
       customer.username = users['users'][i].username;

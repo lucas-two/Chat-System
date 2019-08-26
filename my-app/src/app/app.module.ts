@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
@@ -25,7 +26,9 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
