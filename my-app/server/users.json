@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "email":"a@mail.com",
+      "pwd":"123",
+      "id": 1,
+      "username":"Alice",
+      "status":"GroupAdmin"
+    },
+    {
+      "email":"b@mail.com",
+      "pwd":"123",
+      "id": 2,
+      "username":"Bob",
+      "status":"SuperAdmin"
+    },
+    {
+      "email":"c@mail.com",
+      "pwd":"123",
+      "id": 3,
+      "username":"Connor",
+      "status":"GroupAssis"
+    },
+    {
+      "email":"d@mail.com",
+      "pwd":"123",
+      "id": 4,
+      "username":"David",
+      "status":"Regular"
+    }
+  ]
+}
+
+
+

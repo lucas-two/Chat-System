@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+const BACKEND_URL = 'http://localhost:3000';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,13 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   usernameUser = sessionStorage.getItem('usernameUser');
-  idUser = sessionStorage.getItem('idUser');
-  ageUser = sessionStorage.getItem('ageUser');
-  birthdateUser = sessionStorage.getItem('birthdateUser');
-  emailUser = sessionStorage.getItem('emailUser');
-  constructor() { }
 
   ngOnInit() {
   }
-
 }

@@ -33,8 +33,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('idUser', data.id);
           sessionStorage.setItem('emailUser', data.email);
           sessionStorage.setItem('usernameUser', data.username);
-          sessionStorage.setItem('ageUser', data.age);
-          sessionStorage.setItem('birthdateUser', data.birthdate);
+          sessionStorage.setItem('statusUser', data.status);
           this.router.navigateByUrl('/dashboard');
 
         // Login Failure
