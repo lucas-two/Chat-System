@@ -12,7 +12,7 @@ module.exports = (app) => {
     }
 
     var data = JSON.stringify(req.body, null, 2);
-    fs.writeFile('users.json', data, finished);
+    fs.appendFile('users.json', data, finished);
 
     function finished(err) {
       console.log('Complete');

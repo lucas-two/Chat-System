@@ -32,6 +32,9 @@ export class DashboardComponent implements OnInit {
       usernameNew: this.usernameNew,
       statusNew: this.statusNew
     };
-    this.httpClient.post(BACKEND_URL + '/addUser', this.newUser);
+    this.httpClient.post(BACKEND_URL + '/addUser', this.newUser)
+      .subscribe((data: any) => {
+        console.log('success');
+    });
   }
 }

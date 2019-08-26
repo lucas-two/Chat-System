@@ -13,3 +13,5 @@ app.use(express.static('http://localhost:4200'));
 // require('./routes/api-login.js')(app);
 require('./listen.js')(http);
 require('./routes/api-login.js')(app);
+require('./routes/api-add-user.js')(app);
+

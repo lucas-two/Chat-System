@@ -30,6 +30,16 @@
     }
   ]
 }
-
-
-
+{
+  "idNew": "5",
+  "pwdNew": "123",
+  "emailNew": "new@mail.com",
+  "usernameNew": "newperson",
+  "statusNew": "SuperAdmin"
+}{
+  "idNew": "5",
+  "pwdNew": "123",
+  "emailNew": "new@mail.com",
+  "usernameNew": "newperson",
+  "statusNew": "SuperAdmin"
+}
