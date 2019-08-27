@@ -11,11 +11,20 @@ module.exports = (app) => {
       return res.sendStatus(400);
     }
 
-    var data = JSON.stringify(req.body, null, 2);
-    fs.appendFile('users.json', data, finished);
+    let userObject = {
+      users: []
+   };
+
+    fs.readFile('users.json', 'utf8', (err, data) => {
+      userObject = JSON.parse(data); // Set our object to the users JSON object
+      userObject.users.push(req.body); // Push the new user data into the 'table' section.
+      json = JSON.stringify(userObject, null, 2); // Convert it back to JSON
+      fs.writeFile('users.json', json, 'utf8', finished); // Write it back
+    });
 
     function finished(err) {
-      console.log('Complete');
+      console.log('Successfuly added user!');
     }
+
   });
 }

@@ -1,45 +1,74 @@
 {
   "users": [
     {
-      "email":"a@mail.com",
-      "pwd":"123",
+      "email": "a@mail.com",
+      "pwd": "123",
       "id": 1,
-      "username":"Alice",
-      "status":"GroupAdmin"
+      "username": "Alice",
+      "status": "GroupAdmin"
     },
     {
-      "email":"b@mail.com",
-      "pwd":"123",
+      "email": "b@mail.com",
+      "pwd": "123",
       "id": 2,
-      "username":"Bob",
-      "status":"SuperAdmin"
+      "username": "Bob",
+      "status": "SuperAdmin"
     },
     {
-      "email":"c@mail.com",
-      "pwd":"123",
+      "email": "c@mail.com",
+      "pwd": "123",
       "id": 3,
-      "username":"Connor",
-      "status":"GroupAssis"
+      "username": "Connor",
+      "status": "GroupAssis"
     },
     {
-      "email":"d@mail.com",
-      "pwd":"123",
+      "email": "d@mail.com",
+      "pwd": "123",
       "id": 4,
-      "username":"David",
-      "status":"Regular"
+      "username": "David",
+      "status": "Regular"
+    },
+    {
+      "idNew": "5",
+      "pwdNew": "123",
+      "emailNew": "ad",
+      "usernameNew": "a@mail.com",
+      "statusNew": "adasd"
+    },
+    {
+      "idNew": "5",
+      "pwdNew": "123",
+      "emailNew": "ad",
+      "usernameNew": "a@mail.com",
+      "statusNew": "adasd"
+    },
+    {
+      "idNew": "5",
+      "pwdNew": "123",
+      "emailNew": "ad",
+      "usernameNew": "a@mail.com",
+      "statusNew": "adasd"
+    },
+    {
+      "idNew": "5",
+      "pwdNew": "123",
+      "emailNew": "ad",
+      "usernameNew": "a@mail.com",
+      "statusNew": "adasd"
+    },
+    {
+      "idNew": "8",
+      "pwdNew": "123",
+      "emailNew": "wweeeee",
+      "usernameNew": "awwewe@mail.com",
+      "statusNew": "wewewe"
+    },
+    {
+      "idNew": 7,
+      "pwdNew": "123",
+      "emailNew": "mate@mail.com",
+      "usernameNew": "GoogooGagag",
+      "statusNew": "SuperAdmin"
     }
   ]
-}
-{
-  "idNew": "5",
-  "pwdNew": "123",
-  "emailNew": "new@mail.com",
-  "usernameNew": "newperson",
-  "statusNew": "SuperAdmin"
-}{
-  "idNew": "5",
-  "pwdNew": "123",
-  "emailNew": "new@mail.com",
-  "usernameNew": "newperson",
-  "statusNew": "SuperAdmin"
 }

@@ -1,10 +1,10 @@
  <h1>Dashboard</h1>
  <h5>Welcome, {{usernameUser}} ({{ statusUser }})!</h5>
 
- <input name="idNew" [(ngModel)]="idNew" class="form-control" placeholder="ID">
- <input name="pwdNew" [(ngModel)]="pwdNew" class="form-control" placeholder="Password" type="password">
- <input name="emailNew" [(ngModel)]="emailNew" class="form-control" placeholder="Email" type="email">
+ <input name="idNew" [(ngModel)]="idNew" class="form-control" placeholder="ID" type="number">
  <input name="usernameNew" [(ngModel)]="usernameNew" class="form-control" placeholder="Name">
+ <input name="emailNew" [(ngModel)]="emailNew" class="form-control" placeholder="Email" type="email">
+ <input name="pwdNew" [(ngModel)]="pwdNew" class="form-control" placeholder="Password" type="password">
  <input name="statusNew" [(ngModel)]="statusNew" class="form-control" placeholder="Status">
 
  <button type="submit" class="btn btn-primary btn-block" (click)="createUser()">Create User</button>
