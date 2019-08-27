@@ -6,10 +6,10 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Name</th>
+      <th scope="col">Username</th>
       <th scope="col">Email</th>
       <th scope="col">Status</th>
-      <!-- <th scope="col">Commands</th> -->
+      <th scope="col">Commands</th>
     </tr>
   </thead>
   <tbody>
@@ -18,23 +18,29 @@
           <td>{{user.username}}</td>
           <td>{{user.email}}</td>
           <td>{{user.status}}</td>
-          <!-- <td>
+          <td>
             <button type="submit" class="btn btn-primary btn-block" (click)="getAllUsers()">Make SuperAdmin</button>
             <button type="submit" class="btn btn-primary btn-block" (click)="getAllUsers()">Make GroupAdmin</button>
             <button type="submit" class="btn btn-primary btn-block" (click)="getAllUsers()">Make GroupAssis</button>
-          </td> -->
+          </td>
       </tr>
   </tbody>
 </table>
 
+<!-- Add required field -->
  <br>
  <h5>Create User</h5>
  <p *ngIf="userCreated" class="text-success text-center"> * Created user</p>
- <input name="idNew" [(ngModel)]="idNew" class="form-control" placeholder="ID" type="number">
- <input name="usernameNew" [(ngModel)]="usernameNew" class="form-control" placeholder="Name">
- <input name="emailNew" [(ngModel)]="emailNew" class="form-control" placeholder="Email" type="email">
- <input name="pwdNew" [(ngModel)]="pwdNew" class="form-control" placeholder="Password" type="password">
- <input name="statusNew" [(ngModel)]="statusNew" class="form-control" placeholder="Status">
+ <input name="idNew" [(ngModel)]="idNew" class="form-control" placeholder="ID" type="number" disabled>
+ <input name="usernameNew" [(ngModel)]="usernameNew" class="form-control" placeholder="Username" required>
+ <input name="emailNew" [(ngModel)]="emailNew" class="form-control" placeholder="Email" type="email" required>
+ <input name="pwdNew" [(ngModel)]="pwdNew" class="form-control" placeholder="Password" type="password" required>
+ <select class="form-control" [(ngModel)]="statusNew">
+    <option>Regular</option>
+    <option>GroupAssis</option>
+    <option>GroupAdmin</option>
+    <option>SuperAdmin</option>
+  </select>
  <button type="submit" class="btn btn-primary btn-block" (click)="createUser()" (click)="getAllUsers()">Create User</button>
  <br>
  <h5>Remove User</h5>

@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit {
       .subscribe((data: any) => {
         this.allUsers = data;
         this.idNew = this.allUsers.length + 1;
+        this.statusNew = 'Regular';
     });
   }
 
