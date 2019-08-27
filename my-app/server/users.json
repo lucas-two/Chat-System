@@ -1,23 +1,20 @@
 {
   "users": [
     {
-      "id": 2,
-      "username": "Bob",
-      "email": "b@mail.com",
+      "username": "Alice",
+      "email": "a@mail.com",
       "pwd": "123",
-      "status": "GroupAdmin"
+      "status": "SuperAdmin"
     },
     {
-      "id": 4,
       "username": "Tony",
       "email": "t@mail.com",
       "pwd": "123",
-      "status": "GroupAdmin"
+      "status": "GroupAssis"
     },
     {
-      "id": 6,
-      "username": "Quinton",
-      "email": "q@mail.com",
+      "username": "Jim",
+      "email": "j@mail.com",
       "pwd": "123",
       "status": "Regular"
     }

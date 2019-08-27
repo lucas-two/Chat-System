@@ -13,26 +13,24 @@
     </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let user of allUsers">
-          <td>{{user.id}}</td>
+      <tr *ngFor="let user of allUsers; let i = index">
+          <td>{{i + 1}}</td>
           <td>{{user.username}}</td>
           <td>{{user.email}}</td>
           <td>{{user.status}}</td>
           <td>
-            <button type="submit" class="btn btn-primary btn-block" (click)="updateStatus(user.id, 'SuperAdmin')">Make SuperAdmin</button>
-            <button type="submit" class="btn btn-primary btn-block" (click)="updateStatus(user.id, 'GroupAdmin')">Make GroupAdmin</button>
-            <button type="submit" class="btn btn-primary btn-block" (click)="updateStatus(user.id, 'GroupAssis')">Make GroupAssis</button>
-            <button type="submit" class="btn btn-danger btn-block" (click)="deleteUser(user.id)">Delete</button>
+            <button type="submit" class="btn btn-primary btn-sm" (click)="updateStatus(user.id, 'SuperAdmin')">Make SuperAdmin</button>
+            <button type="submit" class="btn btn-primary btn-sm" (click)="updateStatus(user.id, 'GroupAdmin')">Make GroupAdmin</button>
+            <button type="submit" class="btn btn-primary btn-sm" (click)="updateStatus(user.id, 'GroupAssis')">Make GroupAssis</button>
+            <button type="submit" class="btn btn-danger btn-sm" (click)="deleteUser(user.username)">Delete</button>
           </td>
       </tr>
   </tbody>
+  <button type="submit" class="btn btn-secondary btn-sm" (click)="getAllUsers()">Refresh</button>
 </table>
 
-<!-- Add required field -->
  <br>
  <h5>Create User</h5>
- <p *ngIf="userCreated" class="text-success text-center"> * Created user</p>
- <input name="idNew" [(ngModel)]="idNew" class="form-control" placeholder="ID" type="number" disabled>
  <input name="usernameNew" [(ngModel)]="usernameNew" class="form-control" placeholder="Username" required>
  <input name="emailNew" [(ngModel)]="emailNew" class="form-control" placeholder="Email" type="email" required>
  <input name="pwdNew" [(ngModel)]="pwdNew" class="form-control" placeholder="Password" type="password" required>
@@ -44,4 +42,3 @@
   </select>
  <button type="submit" class="btn btn-primary btn-block" (click)="createUser()" (click)="getAllUsers()">Create User</button>
  <br>
- <h5>Remove User</h5>

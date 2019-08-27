@@ -13,17 +13,14 @@ export class DashboardComponent implements OnInit {
   statusUser = sessionStorage.getItem('statusUser');
 
   // Creating new user
-  idNew: number;
   pwdNew: string;
   emailNew: string;
   usernameNew: string;
   statusNew: string;
   newUser = {};
-  userCreated: boolean;
   allUsers = [];
 
-  accountId = {}; //For delete account function
-
+  userNameObj = {}; // For delete function
 
   constructor(private router: Router, private httpClient: HttpClient) {}
   ngOnInit() {
@@ -34,14 +31,12 @@ export class DashboardComponent implements OnInit {
     this.httpClient.get(BACKEND_URL + '/getUsers')
       .subscribe((data: any) => {
         this.allUsers = data;
-        this.idNew = this.allUsers.length + 1;
         this.statusNew = 'Regular';
     });
   }
 
   createUser() {
     this.newUser = {
-      id: this.idNew,
       username: this.usernameNew,
       email: this.emailNew,
       pwd: this.pwdNew,
@@ -51,8 +46,6 @@ export class DashboardComponent implements OnInit {
       .subscribe((data: any) => {
         console.log('success');
     });
-    this.userCreated = true;
-    this.idNew = this.idNew;
     this.pwdNew = '';
     this.emailNew = '';
     this.usernameNew = '';
@@ -60,13 +53,11 @@ export class DashboardComponent implements OnInit {
     this.getAllUsers();
   }
 
-  deleteUser(userId) {
-    this.accountId = { userId };
-
-    this.httpClient.post(BACKEND_URL + '/deleteUser', this.accountId)
+  deleteUser(userID) {
+    this.userNameObj = {userID};
+    this.httpClient.post(BACKEND_URL + '/deleteUser', this.userNameObj)
       .subscribe((data: any) => {
-        console.log('success');
+      console.log('success');
     });
-    //this.getAllUsers();
   }
 }

@@ -17,9 +17,8 @@ module.exports = (app) => {
   customer.email = '';
   customer.username = '';
   customer.status = '';
-  customer.id = 0;
 
-  for (let i = 0; i < users['users'].length; i++){
+  for (let i = 0; i < users['users'].length; i++) {
 
     console.log(req.body.userEmail); // DEBUGGING ONLY
 
@@ -28,7 +27,6 @@ module.exports = (app) => {
       customer.valid = true;
       customer.email = users['users'][i].email;
       customer.username = users['users'][i].username;
-      customer.id = users['users'][i].id;
       customer.status = users['users'][i].status;
       }
     }
