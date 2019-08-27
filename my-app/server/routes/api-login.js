@@ -5,7 +5,6 @@ module.exports = (app) => {
 
   console.log('Hit by Angular'); // DEBUGGING ONLY
 
-  // Trying to move this code into a service
   let data = fs.readFileSync('users.json');
   let users = JSON.parse(data);
 

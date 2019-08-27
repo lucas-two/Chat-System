@@ -19,22 +19,40 @@ export class DashboardComponent implements OnInit {
   usernameNew: string;
   statusNew: string;
   newUser = {};
+  userCreated: boolean;
+  allUsers = [];
 
   constructor(private router: Router, private httpClient: HttpClient) {}
   ngOnInit() {
+    this.getAllUsers();
+  }
+
+  getAllUsers() {
+    this.httpClient.get(BACKEND_URL + '/getUsers')
+      .subscribe((data: any) => {
+        this.allUsers = data;
+        this.idNew = this.allUsers.length + 1;
+    });
   }
 
   createUser() {
     this.newUser = {
-      idNew: this.idNew,
-      pwdNew: this.pwdNew,
-      emailNew: this.emailNew,
-      usernameNew: this.usernameNew,
-      statusNew: this.statusNew
+      id: this.idNew,
+      username: this.usernameNew,
+      email: this.emailNew,
+      pwd: this.pwdNew,
+      status: this.statusNew
     };
     this.httpClient.post(BACKEND_URL + '/addUser', this.newUser)
       .subscribe((data: any) => {
         console.log('success');
     });
+    this.userCreated = true;
+    this.idNew = this.idNew;
+    this.pwdNew = '';
+    this.emailNew = '';
+    this.usernameNew = '';
+    this.statusNew = '';
+    this.getAllUsers();
   }
 }

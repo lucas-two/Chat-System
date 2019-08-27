@@ -1,74 +1,130 @@
 {
   "users": [
     {
-      "email": "a@mail.com",
-      "pwd": "123",
       "id": 1,
       "username": "Alice",
+      "email": "a@mail.com",
+      "pwd": "123",
       "status": "GroupAdmin"
     },
     {
-      "email": "b@mail.com",
-      "pwd": "123",
       "id": 2,
       "username": "Bob",
+      "email": "b@mail.com",
+      "pwd": "123",
       "status": "SuperAdmin"
     },
     {
-      "email": "c@mail.com",
-      "pwd": "123",
       "id": 3,
-      "username": "Connor",
-      "status": "GroupAssis"
+      "username": "Smith",
+      "email": "s@mail.com",
+      "pwd": "123",
+      "status": "SuperAdmin"
     },
     {
-      "email": "d@mail.com",
-      "pwd": "123",
       "id": 4,
-      "username": "David",
+      "username": "Tony",
+      "email": "t@mail.com",
+      "pwd": "123",
+      "status": "GroupAdmin"
+    },
+    {
+      "id": 5,
+      "username": "Jim",
+      "email": "j@mail.com",
+      "pwd": "123",
+      "status": "GroupAdmin"
+    },
+    {
+      "id": 6,
+      "username": "Quinton",
+      "email": "q@mail.com",
+      "pwd": "123",
       "status": "Regular"
     },
     {
-      "idNew": "5",
-      "pwdNew": "123",
-      "emailNew": "ad",
-      "usernameNew": "a@mail.com",
-      "statusNew": "adasd"
+      "id": 7,
+      "username": "Kal",
+      "email": "k@mail.com",
+      "pwd": "123",
+      "status": "Regular"
     },
     {
-      "idNew": "5",
-      "pwdNew": "123",
-      "emailNew": "ad",
-      "usernameNew": "a@mail.com",
-      "statusNew": "adasd"
+      "id": 8,
+      "username": "Simon",
+      "email": "si@mail.com",
+      "pwd": "123",
+      "status": "GroupAssis"
     },
     {
-      "idNew": "5",
-      "pwdNew": "123",
-      "emailNew": "ad",
-      "usernameNew": "a@mail.com",
-      "statusNew": "adasd"
+      "id": 9,
+      "username": "Jmo",
+      "email": "jmo@mail.com",
+      "pwd": "123",
+      "status": "Regular"
     },
     {
-      "idNew": "5",
-      "pwdNew": "123",
-      "emailNew": "ad",
-      "usernameNew": "a@mail.com",
-      "statusNew": "adasd"
+      "id": 10,
+      "username": "tdog",
+      "email": "tdog@mail.com",
+      "pwd": "123",
+      "status": "Regular"
     },
     {
-      "idNew": "8",
-      "pwdNew": "123",
-      "emailNew": "wweeeee",
-      "usernameNew": "awwewe@mail.com",
-      "statusNew": "wewewe"
+      "id": 11,
+      "username": "bobby",
+      "email": "bobby@mail.com",
+      "pwd": "123",
+      "status": "Regular"
     },
     {
-      "idNew": 7,
-      "pwdNew": "123",
-      "emailNew": "mate@mail.com",
-      "usernameNew": "GoogooGagag",
-      "statusNew": "SuperAdmin"
+      "id": 12,
+      "username": "json",
+      "email": "json@mail.com",
+      "pwd": "123",
+      "status": "Regular"
+    },
+    {
+      "id": 13,
+      "username": "ello",
+      "email": "ello@mail.com",
+      "pwd": "123",
+      "status": "GroupAssis"
+    },
+    {
+      "id": 14,
+      "username": "goodbye",
+      "email": "goodbye@mail.com",
+      "pwd": "123",
+      "status": "GroupAssis"
+    },
+    {
+      "id": 15,
+      "username": "tmartn",
+      "email": "tmartn@mail.com",
+      "pwd": "123",
+      "status": "Regular"
+    },
+    {
+      "id": 16,
+      "username": "moo",
+      "email": "moo@mail.com",
+      "pwd": "123",
+      "status": "SuperAdmin"
+    },
+    {
+      "id": 17,
+      "username": "ooo",
+      "email": "ooo@mail",
+      "pwd": "123",
+      "status": "Big"
+    },
+    {
+      "id": 18,
+      "username": "Baaa",
+      "email": "Baa@mail.com",
+      "pwd": "123",
+      "status": "Big"
     }
   ]
 }

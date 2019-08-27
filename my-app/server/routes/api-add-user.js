@@ -1,5 +1,3 @@
-// Trying to create an API that will add new users to the users.json file
-
 const fs = require('fs');
 
 module.exports = (app) => {
