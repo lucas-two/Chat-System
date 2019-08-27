@@ -22,6 +22,9 @@ export class DashboardComponent implements OnInit {
   userCreated: boolean;
   allUsers = [];
 
+  accountId = {}; //For delete account function
+
+
   constructor(private router: Router, private httpClient: HttpClient) {}
   ngOnInit() {
     this.getAllUsers();
@@ -55,5 +58,15 @@ export class DashboardComponent implements OnInit {
     this.usernameNew = '';
     this.statusNew = '';
     this.getAllUsers();
+  }
+
+  deleteUser(userId) {
+    this.accountId = { userId };
+
+    this.httpClient.post(BACKEND_URL + '/deleteUser', this.accountId)
+      .subscribe((data: any) => {
+        console.log('success');
+    });
+    //this.getAllUsers();
   }
 }

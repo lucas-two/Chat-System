@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private httpClient: HttpClient) {}
   ngOnInit() {}
 
+
   public LoginUser() {
     this.user = { userEmail: this.userEmail, userPwd: this.userPwd};
     this.httpClient.post(BACKEND_URL + '/login', this.user)

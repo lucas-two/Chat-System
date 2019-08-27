@@ -19,9 +19,10 @@
           <td>{{user.email}}</td>
           <td>{{user.status}}</td>
           <td>
-            <button type="submit" class="btn btn-primary btn-block" (click)="getAllUsers()">Make SuperAdmin</button>
-            <button type="submit" class="btn btn-primary btn-block" (click)="getAllUsers()">Make GroupAdmin</button>
-            <button type="submit" class="btn btn-primary btn-block" (click)="getAllUsers()">Make GroupAssis</button>
+            <button type="submit" class="btn btn-primary btn-block" (click)="updateStatus(user.id, 'SuperAdmin')">Make SuperAdmin</button>
+            <button type="submit" class="btn btn-primary btn-block" (click)="updateStatus(user.id, 'GroupAdmin')">Make GroupAdmin</button>
+            <button type="submit" class="btn btn-primary btn-block" (click)="updateStatus(user.id, 'GroupAssis')">Make GroupAssis</button>
+            <button type="submit" class="btn btn-danger btn-block" (click)="deleteUser(user.id)">Delete</button>
           </td>
       </tr>
   </tbody>

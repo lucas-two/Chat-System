@@ -1,25 +1,11 @@
 {
   "users": [
     {
-      "id": 1,
-      "username": "Alice",
-      "email": "a@mail.com",
-      "pwd": "123",
-      "status": "GroupAdmin"
-    },
-    {
       "id": 2,
       "username": "Bob",
       "email": "b@mail.com",
       "pwd": "123",
-      "status": "SuperAdmin"
-    },
-    {
-      "id": 3,
-      "username": "Smith",
-      "email": "s@mail.com",
-      "pwd": "123",
-      "status": "SuperAdmin"
+      "status": "GroupAdmin"
     },
     {
       "id": 4,
@@ -29,23 +15,9 @@
       "status": "GroupAdmin"
     },
     {
-      "id": 5,
-      "username": "Jim",
-      "email": "j@mail.com",
-      "pwd": "123",
-      "status": "GroupAdmin"
-    },
-    {
       "id": 6,
       "username": "Quinton",
       "email": "q@mail.com",
-      "pwd": "123",
-      "status": "Regular"
-    },
-    {
-      "id": 7,
-      "username": "Kal",
-      "email": "k@mail.com",
       "pwd": "123",
       "status": "Regular"
     }
