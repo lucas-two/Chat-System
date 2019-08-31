@@ -22,6 +22,14 @@ export class AppComponent {
       }
   }
 
+  isGroupAdmin() {
+    if (sessionStorage.getItem('statusUser') === 'GroupAdmin') {
+      return true;
+    } else {
+      return false;
+      }
+  }
+
   LoginStatus() {
     if (sessionStorage.getItem('usernameUser') == null) {
       return false;

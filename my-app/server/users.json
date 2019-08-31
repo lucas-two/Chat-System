@@ -29,6 +29,12 @@
       "email": "s@mail.com",
       "pwd": "123",
       "status": "GroupAssis"
+    },
+    {
+      "username": "newman",
+      "email": "newman@mail.com",
+      "pwd": "123",
+      "status": "GroupAdmin"
     }
   ]
 }

@@ -66,4 +66,12 @@ export class CreateuserComponent implements OnInit {
     });
     this.getAllUsers();
   }
+
+  isSuperAdmin() {
+    if (sessionStorage.getItem('statusUser') === 'SuperAdmin') {
+      return true;
+    } else {
+      return false;
+      }
+  }
 }
