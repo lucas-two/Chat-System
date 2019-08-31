@@ -68,10 +68,6 @@ export class DashboardComponent implements OnInit {
     callback();
   }
 
-  // Update later
-  updateStatus() {
-  }
-
   hasSlectedGroup() {
     if (this.selectedGroup == null) {
       return false;

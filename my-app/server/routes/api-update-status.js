@@ -17,7 +17,7 @@ module.exports = (app) => {
 
       for (let i = 0; i < userObject.users.length; i++) {
         if (req.body.userID == userObject.users[i].username) {
-          userObject.users.splice(i, 1);
+          userObject.users[i].status = req.body.newStatus;
           json = JSON.stringify(userObject, null, 2); // Convert it back to JSON
           fs.writeFile('users.json', json, 'utf8', finished); // Write it back
         }
@@ -25,7 +25,7 @@ module.exports = (app) => {
     });
 
     function finished(err) {
-      console.log('Successfuly deleted user!');
+      console.log('Successfuly updated user status!');
     }
   });
 }

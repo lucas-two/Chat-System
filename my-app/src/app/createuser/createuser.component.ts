@@ -23,7 +23,7 @@ export class CreateuserComponent implements OnInit {
   newUser = {};
   allUsers = [];
   selectedGroup: string;
-  userNameObj = {}; // For delete function
+  userNameObj = {}; // For delete & update status function
 
   constructor(private router: Router, private httpClient: HttpClient) { }
 
@@ -44,7 +44,8 @@ export class CreateuserComponent implements OnInit {
       username: this.usernameNew,
       email: this.emailNew,
       pwd: this.pwdNew,
-      status: this.statusNew
+      status: this.statusNew,
+      groups: []
     };
     this.httpClient.post(BACKEND_URL + '/addUser', this.newUser)
       .subscribe((data: any) => {
@@ -74,4 +75,14 @@ export class CreateuserComponent implements OnInit {
       return false;
       }
   }
+
+    // Updating the status of a user (e.g. setting to SuperAdmin)
+    updateStatus(userID, newStatus) {
+      this.userNameObj = {userID, newStatus};
+      this.httpClient.post(BACKEND_URL + '/updateStatus', this.userNameObj)
+        .subscribe((data: any) => {
+        console.log('success');
+      });
+      this.getAllUsers();
+    }
 }

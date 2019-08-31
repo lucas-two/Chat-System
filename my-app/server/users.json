@@ -14,27 +14,15 @@
       "username": "Tony",
       "email": "t@mail.com",
       "pwd": "123",
-      "status": "GroupAssis",
+      "status": "GroupAdmin",
       "groups": []
     },
     {
-      "username": "Jim",
-      "email": "j@mail.com",
-      "pwd": "123",
-      "status": "Regular",
-      "groups": []
-    },
-    {
-      "username": "Smarty",
+      "username": "Smith",
       "email": "s@mail.com",
       "pwd": "123",
-      "status": "GroupAssis"
-    },
-    {
-      "username": "newman",
-      "email": "newman@mail.com",
-      "pwd": "123",
-      "status": "GroupAdmin"
+      "status": "GroupAssis",
+      "groups": []
     }
   ]
 }
