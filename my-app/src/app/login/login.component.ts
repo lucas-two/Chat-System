@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   userEmail: string;
   userPwd: string;
   userInvalid: boolean;
+  groupsArr: []; // For storing array of groups
   user = {};
 
   constructor(private router: Router, private httpClient: HttpClient) {}
@@ -31,10 +32,10 @@ export class LoginComponent implements OnInit {
 
         // Login Success
         if (data.valid) {
-          sessionStorage.setItem('idUser', data.id);
           sessionStorage.setItem('emailUser', data.email);
           sessionStorage.setItem('usernameUser', data.username);
           sessionStorage.setItem('statusUser', data.status);
+          sessionStorage.setItem('groupsUser', data.groups);
           this.router.navigateByUrl('/dashboard');
 
         // Login Failure

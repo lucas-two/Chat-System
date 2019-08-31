@@ -10,7 +10,9 @@ const BACKEND_URL = 'http://localhost:3000';
 })
 export class DashboardComponent implements OnInit {
   usernameUser = sessionStorage.getItem('usernameUser');
+  groupsUser = sessionStorage.getItem('groupsUser');
   statusUser = sessionStorage.getItem('statusUser');
+  groupArr = this.groupsUser.split(',');
 
   // Creating new user
   pwdNew: string;
@@ -19,12 +21,15 @@ export class DashboardComponent implements OnInit {
   statusNew: string;
   newUser = {};
   allUsers = [];
+  selectedGroup: string;
 
   userNameObj = {}; // For delete function
 
   constructor(private router: Router, private httpClient: HttpClient) {}
   ngOnInit() {
     this.getAllUsers();
+    console.log(this.groupsUser[0]);
+    console.log(this.selectedGroup);
   }
 
   getAllUsers() {
@@ -62,7 +67,16 @@ export class DashboardComponent implements OnInit {
     });
     callback();
   }
-  updateStatus() {
 
+  // Update later
+  updateStatus() {
+  }
+
+  hasSlectedGroup() {
+    if (this.selectedGroup == null) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

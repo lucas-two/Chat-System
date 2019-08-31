@@ -5,6 +5,7 @@
     <li><a class='nav-link' *ngIf="!LoginStatus()" [routerLink]="['/login']">Sign in</a></li>
     <li><a class='nav-link' [routerLink]="['/home']">Home</a></li>
     <li><a class='nav-link' *ngIf="LoginStatus()" [routerLink]="['/dashboard']">Dashboard</a></li>
+    <li><a class='nav-link' *ngIf="isSuperAdmin()" [routerLink]="['/createuser']">Manage Users</a></li>
   </ul>
 </nav>
 <div class="container">

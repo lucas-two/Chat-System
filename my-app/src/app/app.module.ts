@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { UserService } from './services/user.service';
+import { CreateuserComponent } from './createuser/createuser.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { UserService } from './services/user.service';
     LoginComponent,
     DashboardComponent,
     HomeComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    CreateuserComponent
   ],
   imports: [
     BrowserModule,

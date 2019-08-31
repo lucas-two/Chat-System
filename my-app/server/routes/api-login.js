@@ -17,6 +17,7 @@ module.exports = (app) => {
   customer.email = '';
   customer.username = '';
   customer.status = '';
+  customer.groups = [];
 
   for (let i = 0; i < users['users'].length; i++) {
 
@@ -28,6 +29,7 @@ module.exports = (app) => {
       customer.email = users['users'][i].email;
       customer.username = users['users'][i].username;
       customer.status = users['users'][i].status;
+      customer.groups = users['users'][i].groups;
       }
     }
     // Send the customer object on
