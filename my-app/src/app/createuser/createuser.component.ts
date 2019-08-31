@@ -10,20 +10,24 @@ const BACKEND_URL = 'http://localhost:3000';
 })
 export class CreateuserComponent implements OnInit {
 
+  // Get user details from session storage
   usernameUser = sessionStorage.getItem('usernameUser');
-  groupsUser = sessionStorage.getItem('groupsUser');
   statusUser = sessionStorage.getItem('statusUser');
-  groupArr = this.groupsUser.split(',');
+  groupsUser = sessionStorage.getItem('groupsUser');
+  groupArr = this.groupsUser.split(','); // Convert the groupsUser into an array
 
-  // Creating new user
+  // Storing new user
   pwdNew: string;
   emailNew: string;
   usernameNew: string;
   statusNew: string;
   newUser = {};
-  allUsers = [];
-  selectedGroup: string;
-  userNameObj = {}; // For delete & update status function
+
+  allUsers = []; // Array for all users in system
+  userNameObj = {}; // Object for deleting/update purposes
+
+  existingUserError: boolean; // Flag if user already existed
+  userCreated: boolean; // Flag if user was created successfully
 
   constructor(private router: Router, private httpClient: HttpClient) { }
 
@@ -34,12 +38,13 @@ export class CreateuserComponent implements OnInit {
   getAllUsers() {
     this.httpClient.get(BACKEND_URL + '/getUsers')
       .subscribe((data: any) => {
-        this.allUsers = data;
-        this.statusNew = 'Regular';
+        this.allUsers = data; // Get data of all users in storage
+        this.statusNew = 'Regular'; // Update back to default status
     });
   }
 
   createUser() {
+    // Object for storing new user info
     this.newUser = {
       username: this.usernameNew,
       email: this.emailNew,
@@ -47,28 +52,43 @@ export class CreateuserComponent implements OnInit {
       status: this.statusNew,
       groups: []
     };
+
+    // Post the new user object to the addUser API
     this.httpClient.post(BACKEND_URL + '/addUser', this.newUser)
       .subscribe((data: any) => {
         console.log('success');
+
+        // If user already existed
+        if (data) {
+          // Update flags
+          this.existingUserError = true;
+          this.userCreated = false;
+        } else {
+          // Update flags
+          this.userCreated = true;
+          this.existingUserError = false;
+          // Reset the 'new' user info
+          this.pwdNew = '';
+          this.emailNew = '';
+          this.usernameNew = '';
+          this.statusNew = '';
+          // Refresh displayed user records
+          this.getAllUsers();
+        }
     });
-    this.pwdNew = '';
-    this.emailNew = '';
-    this.usernameNew = '';
-    this.statusNew = '';
-    this.getAllUsers();
   }
 
-  // Eventually we need to get a callback function in here which can call getAllUsers();
   deleteUser(userID) {
     this.userNameObj = {userID};
     this.httpClient.post(BACKEND_URL + '/deleteUser', this.userNameObj)
       .subscribe((data: any) => {
       console.log('success');
+      this.getAllUsers(); // Update list of users
     });
-    this.getAllUsers();
   }
 
   isSuperAdmin() {
+    // Check session storage of current user's 'status'
     if (sessionStorage.getItem('statusUser') === 'SuperAdmin') {
       return true;
     } else {
@@ -76,13 +96,13 @@ export class CreateuserComponent implements OnInit {
       }
   }
 
-    // Updating the status of a user (e.g. setting to SuperAdmin)
-    updateStatus(userID, newStatus) {
-      this.userNameObj = {userID, newStatus};
-      this.httpClient.post(BACKEND_URL + '/updateStatus', this.userNameObj)
-        .subscribe((data: any) => {
+  updateStatus(userID, newStatus) {
+    // Store username and new status in an object to send
+    this.userNameObj = {userID, newStatus};
+    this.httpClient.post(BACKEND_URL + '/updateStatus', this.userNameObj)
+      .subscribe((data: any) => {
         console.log('success');
+        this.getAllUsers(); // Update list of users
       });
-      this.getAllUsers();
     }
 }

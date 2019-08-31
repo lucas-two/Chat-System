@@ -6,22 +6,35 @@
       "pwd": "123",
       "status": "SuperAdmin",
       "groups": [
-        "Pizza",
-        "Pasta"
+        "Pizza"
       ]
+    },
+    {
+      "username": "Smith",
+      "email": "s@mail.com",
+      "pwd": "123",
+      "status": "GroupAdmin",
+      "groups": []
+    },
+    {
+      "username": "Brad",
+      "email": "b@mail.com",
+      "pwd": "123",
+      "status": "Regular",
+      "groups": []
+    },
+    {
+      "username": "Ally",
+      "email": "al@mail.com",
+      "pwd": "123",
+      "status": "GroupAssis",
+      "groups": []
     },
     {
       "username": "Tony",
       "email": "t@mail.com",
       "pwd": "123",
       "status": "GroupAdmin",
-      "groups": []
-    },
-    {
-      "username": "Smith",
-      "email": "s@mail.com",
-      "pwd": "123",
-      "status": "GroupAssis",
       "groups": []
     }
   ]

@@ -42,7 +42,10 @@
    <option>Regular</option>
    <option>GroupAssis</option>
    <option>GroupAdmin</option>
-   <option>SuperAdmin</option>
+   <option *ngIf="isSuperAdmin()">SuperAdmin</option>
  </select>
 <button type="submit" class="btn btn-primary btn-block" (click)="createUser()" (click)="getAllUsers()">Create User</button>
+<p *ngIf="existingUserError" class="text-danger text-center"> * User Already Exists</p>
+<p *ngIf="userCreated" class="text-success text-center"> * User Created</p>
+
 <br>

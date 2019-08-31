@@ -8,9 +8,8 @@ module.exports = (app) => {
       return res.sendStatus(400);
     }
 
-    let userObject = {
-      users: []
-   };
+    // Object for storing the users.json file
+    let userObject = { users: [] };
 
     fs.readFile('users.json', 'utf8', (err, data) => {
       userObject = JSON.parse(data); // Set our object to the users JSON object
