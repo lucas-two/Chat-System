@@ -53,11 +53,16 @@ export class DashboardComponent implements OnInit {
     this.getAllUsers();
   }
 
-  deleteUser(userID) {
+  // Eventually we need to get a callback function in here which can call getAllUsers();
+  deleteUser(userID, callback) {
     this.userNameObj = {userID};
     this.httpClient.post(BACKEND_URL + '/deleteUser', this.userNameObj)
       .subscribe((data: any) => {
       console.log('success');
     });
+    callback();
+  }
+  updateStatus() {
+
   }
 }

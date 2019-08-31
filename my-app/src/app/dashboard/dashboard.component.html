@@ -22,7 +22,7 @@
             <button type="submit" class="btn btn-primary btn-sm" (click)="updateStatus(user.id, 'SuperAdmin')">Make SuperAdmin</button>
             <button type="submit" class="btn btn-primary btn-sm" (click)="updateStatus(user.id, 'GroupAdmin')">Make GroupAdmin</button>
             <button type="submit" class="btn btn-primary btn-sm" (click)="updateStatus(user.id, 'GroupAssis')">Make GroupAssis</button>
-            <button type="submit" class="btn btn-danger btn-sm" (click)="deleteUser(user.username)">Delete</button>
+            <button type="submit" class="btn btn-danger btn-sm" (click)="deleteUser(user.username, this.getAllUsers())">Delete</button>
           </td>
       </tr>
   </tbody>
