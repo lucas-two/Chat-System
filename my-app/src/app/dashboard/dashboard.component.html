@@ -1,22 +1,6 @@
- <h1>Dashboard</h1>
- <h5>Welcome, {{usernameUser}} ({{ statusUser }})!</h5>
- <br>
-
- <!-- ADMIN ONLY -->
- <h5>Create User</h5>
- <input name="usernameNew" [(ngModel)]="usernameNew" class="form-control" placeholder="Username" required>
- <input name="emailNew" [(ngModel)]="emailNew" class="form-control" placeholder="Email" type="email" required>
- <input name="pwdNew" [(ngModel)]="pwdNew" class="form-control" placeholder="Password" type="password" required>
- <select class="form-control" [(ngModel)]="statusNew">
-    <option>Regular</option>
-    <option>GroupAssis</option>
-    <option>GroupAdmin</option>
-    <option>SuperAdmin</option>
-  </select>
- <button type="submit" class="btn btn-primary btn-block" (click)="createUser()" (click)="getAllUsers()">Create User</button>
- <br>
-
- <h5>Your Groups</h5>
+<h1>Dashboard</h1>
+<h5>Welcome, {{usernameUser}} ({{ statusUser }})!</h5>
+<h5>Your Groups</h5>
 
  <!-- Groups added to -->
 <select class="form-control" [(ngModel)]="selectedGroup">

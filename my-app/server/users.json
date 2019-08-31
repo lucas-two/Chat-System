@@ -5,7 +5,10 @@
       "email": "a@mail.com",
       "pwd": "123",
       "status": "SuperAdmin",
-      "groups": ["Pizza", "Pasta"]
+      "groups": [
+        "Pizza",
+        "Pasta"
+      ]
     },
     {
       "username": "Tony",
@@ -20,6 +23,12 @@
       "pwd": "123",
       "status": "Regular",
       "groups": []
+    },
+    {
+      "username": "Smarty",
+      "email": "s@mail.com",
+      "pwd": "123",
+      "status": "GroupAssis"
     }
   ]
 }
