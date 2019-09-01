@@ -17,5 +17,7 @@ require('./routes/api-get-users.js')(app);
 require('./routes/api-delete-user.js')(app);
 require('./routes/api-update-status.js')(app);
 require('./routes/api-get-groups.js')(app);
+require('./routes/api-add-to-group.js')(app);
+
 
 

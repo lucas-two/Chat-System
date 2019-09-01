@@ -51,7 +51,7 @@ export class CreateuserComponent implements OnInit {
       email: this.emailNew,
       pwd: this.pwdNew,
       status: this.statusNew,
-      groups: [ { groupName: '', channels: [] } ]
+      groups: [ ]
     };
 
     // Post the new user object to the addUser API

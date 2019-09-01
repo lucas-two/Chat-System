@@ -19,6 +19,9 @@ export class DashboardComponent implements OnInit {
   selectedGroup: string; // Current selected group
   selectedChannel: string; // Current selected group
 
+  userGroupObject = {}; // Object for storing group info (add/remove)
+  groupObject = {}; // Storing group object
+
   // Storing management related group/channel names
   selectedGroupManageG: string;
   selectedUserManageG: string;
@@ -82,8 +85,10 @@ export class DashboardComponent implements OnInit {
     }
 
   // Adding a user to a group
-  addUserToGroup() {
-    this.httpClient.get(BACKEND_URL + '/addToGroup')
+  addUserToGroup(userID, groupID) {
+    this.groupObject = {groupName: groupID, channels: []};
+    this.userGroupObject = {user: userID, group: this.groupObject};
+    this.httpClient.post(BACKEND_URL + '/addToGroup', this.userGroupObject)
       .subscribe((data: any) => {
         console.log('Success');
     });

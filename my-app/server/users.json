@@ -38,49 +38,37 @@
       ]
     },
     {
-      "username": "Mike",
-      "email": "m@mail.com",
-      "pwd": "123",
-      "status": "SuperAdmin",
-      "groups": [
-        {
-          "groupName": "",
-          "channels": []
-        }
-      ]
-    },
-    {
-      "username": "Simon",
-      "email": "albi@mail.com",
-      "pwd": "123",
-      "status": "Regular",
-      "groups": [
-        {
-          "groupName": "",
-          "channels": []
-        }
-      ]
-    },
-    {
       "username": "Alex",
-      "email": "alex@mail.com",
+      "email": "Alex@mail.com",
       "pwd": "123",
-      "status": "Regular",
+      "status": "GroupAdmin",
       "groups": [
         {
-          "groupName": "",
+          "groupName": "Japan",
+          "channels": []
+        },
+        {
+          "groupName": "Japan",
           "channels": []
         }
       ]
     },
     {
-      "username": "Reuben",
-      "email": "reuben@mail.com",
+      "username": "Bob",
+      "email": "b@mail.com",
       "pwd": "123",
-      "status": "SuperAdmin",
+      "status": "GroupAdmin",
       "groups": [
         {
-          "groupName": "",
+          "groupName": "Drink",
+          "channels": []
+        },
+        {
+          "groupName": "Japan",
+          "channels": []
+        },
+        {
+          "groupName": "Drink",
           "channels": []
         }
       ]
