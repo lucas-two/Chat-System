@@ -60,6 +60,30 @@
           "channels": []
         }
       ]
+    },
+    {
+      "username": "Simon",
+      "email": "albi@mail.com",
+      "pwd": "123",
+      "status": "Regular",
+      "groups": [
+        {
+          "groupName": "",
+          "channels": []
+        }
+      ]
+    },
+    {
+      "username": "Alex",
+      "email": "alex@mail.com",
+      "pwd": "123",
+      "status": "Regular",
+      "groups": [
+        {
+          "groupName": "",
+          "channels": []
+        }
+      ]
     }
   ]
 }

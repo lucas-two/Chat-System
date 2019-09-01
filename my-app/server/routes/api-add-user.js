@@ -19,7 +19,7 @@ module.exports = (app) => {
 
       // Check if user is already existing
       for (let i = 0; i < userObject.users.length; i++) {
-        if(req.body.username === userObject.users[i].username){
+        if(req.body.username === userObject.users[i].username || req.body.email === userObject.users[i].email){
           existing = true; // Set flag if is existing
         }
       }

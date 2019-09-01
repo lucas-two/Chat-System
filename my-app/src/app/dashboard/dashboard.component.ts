@@ -23,6 +23,8 @@ export class DashboardComponent implements OnInit {
   newChannelName: string;
   newGroup = { groupName: this.newGroupName, channels: [] };
 
+  userText: string; // Stores what user writes in textbox
+
   constructor(private router: Router, private httpClient: HttpClient) {}
   ngOnInit() {
     this.getAllUsers();
@@ -36,7 +38,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  // Knowing if channels should be displayed
+  // Has user selected a group
   hasSlectedGroup() {
     if (this.selectedGroup == null) {
       return false;
@@ -45,10 +47,29 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+    // Has user selected a channel
+    hasSlectedChannel() {
+      if (this.selectedChannel == null) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
   // Adding a user to a group
   addUserToGroup() {
     this.httpClient.get(BACKEND_URL + '/addToGroup')
       .subscribe((data: any) => {
     });
+  }
+
+  // - Not yet implemented -
+  // Function for sending messages
+  sendMessage() {
+    this.userText = ''; // Clear textbox
+  }
+
+  exitChannel() {
+    this.selectedChannel = null;
   }
 }

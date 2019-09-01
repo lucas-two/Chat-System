@@ -21,12 +21,37 @@
         </div>
       </div>
   </ng-template>
+  <br>
 
   <!-- Display a message if group is not selected -->
   <ng-template #notSelectedGroup>
-    <p class="text-muted">Select a Group to see your channels.</p>
+    <p class="text-muted">Select a group to see your channels.</p>
   </ng-template>
 
+  <div *ngIf="hasSlectedGroup()">
+  <ng-template [ngIf]="hasSlectedChannel()" [ngIfElse]="notSelectedChannel">
+      <!-- Chat History -->
+      <div class="form-group">
+          <h5>Chat History</h5>
+          <textarea class="form-control" rows="5" disabled></textarea>
+        </div>
+        <!-- User message input -->
+        <div class="pull-left">
+            <div class="input-group">
+              <input type="text" class="form-control" [(ngModel)]="userText" (keydown.enter)="sendMessage()">
+              <button type="submit" class="btn btn-primary btn-small" (click)="sendMessage()">Send</button>
+            </div>
+        </div>
+        <br>
+        <!-- Exiting the channel -->
+        <button type="submit" class="btn btn-danger btn-small" (click)="exitChannel()">Exit Channel</button>
+  </ng-template>
+</div>
+
+  <!-- Display a message if channel is not selected -->
+  <ng-template #notSelectedChannel>
+      <p class="text-muted">Select a channel to enter chat room.</p>
+  </ng-template>
 
 
 
