@@ -19,16 +19,18 @@ export class DashboardComponent implements OnInit {
   selectedGroup: string; // Current selected group
   selectedChannel: string; // Current selected group
 
+  // Storing management related group/channel names
+  selectedGroupManageG: string;
+  selectedUserManageG: string;
+  selectedGroupManageC: string;
+  selectedChannelManageC: string;
+  selectedUserManageC: string;
+
+
   // Variables for creating new groups
   newGroupName: string;
   newChannelName: string;
   newGroup = { groupName: this.newGroupName, channels: [] };
-
-  // Channel/group requests for inviting and removing users
-  groupRequests: string;
-
-  channelGroupRequests: string;
-  channelRequests: string;
 
   userText: string; // Stores what user writes in textbox
 
@@ -36,6 +38,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.getAllUsers();
     this.getAllGroups();
+    this.selectedGroupManageG = '';
+    this.selectedUserManageG = '';
+    this.selectedGroupManageC = '';
+    this.selectedChannelManageC = '';
+    this.selectedUserManageC = '';
+    this.selectedGroup = '';
+    this.selectedChannel = '';
   }
 
   // Getting all users in the system
@@ -56,7 +65,7 @@ export class DashboardComponent implements OnInit {
 
   // Has user selected a group
   hasSlectedGroup() {
-    if (this.selectedGroup == null) {
+    if (this.selectedGroup === '') {
       return false;
     } else {
       return true;
@@ -65,7 +74,7 @@ export class DashboardComponent implements OnInit {
 
     // Has user selected a channel
     hasSlectedChannel() {
-      if (this.selectedChannel == null) {
+      if (this.selectedChannel === '') {
         return false;
       } else {
         return true;
@@ -119,6 +128,10 @@ export class DashboardComponent implements OnInit {
   // - Not yet implemented -
   // Function for exiting channel
   exitChannel() {
-    this.selectedChannel = null; // Deselect channel
+    this.selectedChannel = ''; // Deselect channel
+  }
+
+  displayMessage(msg) {
+    alert(msg);
   }
 }

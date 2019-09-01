@@ -2,65 +2,55 @@
 <h5>Welcome, {{usernameUser}} ({{ statusUser }})!</h5>
 <br>
 
+<!-- Admin Tools -->
 
-<!-- Adding and removing users from groups/channels -->
-<div *ngIf="isSuperAdmin() || isGroupAdmin()" [(ngModel)]="groupRequests">
-    <h5>Manage User Groups & Channels</h5>
-    <!--Groups -->
-    <div class="card-body">
-      <h5 class="card-title">Groups</h5>
-      <div class="pull-left">
-          <div class="input-group">
-              <select class="form-control">
-                  <option *ngFor="let user of allUsers">{{ user.username }}</option>
-                </select>
-            <select class="form-control">
-              <option *ngFor="let group of allGroups">{{ group.groupName }}</option>
-            </select>
-        </div>
-        <br>
-        <button type="submit" class="btn btn-primary btn-small" (click)="addToGroup()">Invite</button>
-        <button type="submit" class="btn btn-danger btn-small" (click)="removeFromGroup()">Remove</button>
-      </div>
-    </div>
-    <!-- Channels -->
-    <div class="card-body">
-        <h5 class="card-title">Channels</h5>
-        <div class="pull-left">
-            <div class="input-group">
-              <!-- Select user -->
-                <select class="form-control">
-                    <option *ngFor="let user of allUsers">{{ user.username }}</option>
-                  </select>
-                  <!-- Select group of channel -->
-              <select class="form-control" [(ngModel)]="channelGroupRequests">
-                <option *ngFor="let group of allGroups">{{ group.groupName }}</option>
+<!-- Updating user groups and channels -->
+<h5>Manage User Groups & Channels</h5>
+<!-- Channels -->
+<div class="card-body">
+    <h5 class="card-title">Channels</h5>
+    <div class="pull-left">
+        <div class="input-group">
+
+          <!-- Display Users -->
+          <select class="form-control" [(ngModel)]="selectedUserManageC">
+            <option value="" selected disabled hidden>Select User</option>
+            <option *ngFor="let user of allUsers">{{ user.username }}</option>
+          </select>
+
+          <!-- Display Groups -->
+          <select class="form-control" [(ngModel)]="selectedGroupManageC">
+            <option value="" selected disabled hidden>Select Group</option>
+            <option *ngFor="let group of allGroups">{{ group.groupName }}</option>
+          </select>
+
+          <!-- Display Channels -->
+          <div *ngFor= "let group of allGroups">
+              <!-- Get the channels of the selected group -->
+            <div *ngIf="group.groupName == selectedGroupManageC">
+              <select class="form-control" [(ngModel)]="selectedChannelManageC">
+                <option value="" selected disabled hidden>Select Channel</option>
+                <option *ngFor="let channel of group.channels">{{ channel }}</option>
               </select>
-              <!--Select channel -->
-              <div *ngFor= "let group of allGroups">
-                  <div *ngIf="group.groupName == channelGroupRequests">
-                      <select class="form-control" [(ngModel)]="channelRequests">
-                          <option *ngFor="let channel of group.channels">{{ channel }}</option>
-                      </select>
-                  </div>
-                </div>
-          </div>
-          <br>
-          <button type="submit" class="btn btn-primary btn-small" (click)="addToGroup()">Invite</button>
-          <button type="submit" class="btn btn-danger btn-small" (click)="removeFromGroup()">Remove</button>
+            </div>
         </div>
       </div>
-
-
+      <br>
+      <button type="submit" class="btn btn-primary btn-small">Invite to Channel</button>
+      <button type="submit" class="btn btn-danger btn-small">Remove from Channel</button>
+    </div>
 </div>
 <br>
 
 
 
+
 <!-- Message board -->
+
 <!-- Groups -->
 <h5>Your Groups</h5>
 <select class="form-control" [(ngModel)]="selectedGroup">
+  <option value="" selected disabled hidden>Select Group</option>
   <option *ngFor="let group of groupsUser">{{ group.groupName }}</option>
 </select>
 <br>
@@ -72,6 +62,7 @@
         <!-- Get the channels of the selected group -->
         <div *ngIf="group.groupName == selectedGroup">
             <select class="form-control" [(ngModel)]="selectedChannel">
+                <option value="" selected disabled hidden>Select Channel</option>
                 <option *ngFor="let channel of group.channels">{{ channel }}</option>
             </select>
         </div>
