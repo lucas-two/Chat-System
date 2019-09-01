@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('emailUser', data.email);
           sessionStorage.setItem('usernameUser', data.username);
           sessionStorage.setItem('statusUser', data.status);
-          sessionStorage.setItem('groupsUser', data.groups);
+          sessionStorage.setItem('groupsUser', JSON.stringify(data.groups));
           this.router.navigateByUrl('/dashboard');
 
         // Login Failure

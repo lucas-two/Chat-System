@@ -13,8 +13,7 @@ export class CreateuserComponent implements OnInit {
   // Get user details from session storage
   usernameUser = sessionStorage.getItem('usernameUser');
   statusUser = sessionStorage.getItem('statusUser');
-  groupsUser = sessionStorage.getItem('groupsUser');
-  groupArr = this.groupsUser.split(','); // Convert the groupsUser into an array
+  groupUser = JSON.parse(sessionStorage.getItem('groupsUser'));
 
   // Storing new user
   pwdNew: string;
@@ -40,6 +39,7 @@ export class CreateuserComponent implements OnInit {
       .subscribe((data: any) => {
         this.allUsers = data; // Get data of all users in storage
         this.statusNew = 'Regular'; // Update back to default status
+        console.log(this.allUsers);
     });
   }
 
@@ -50,7 +50,7 @@ export class CreateuserComponent implements OnInit {
       email: this.emailNew,
       pwd: this.pwdNew,
       status: this.statusNew,
-      groups: []
+      groups: [ { groupName: '', channels: [] } ]
     };
 
     // Post the new user object to the addUser API

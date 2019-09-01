@@ -6,36 +6,60 @@
       "pwd": "123",
       "status": "SuperAdmin",
       "groups": [
-        "Pizza"
+        {
+          "groupName": "Food",
+          "channels": [
+            "Pizza",
+            "Soda"
+          ]
+        },
+        {
+          "groupName": "Japan",
+          "channels": [
+            "Birds",
+            "Deer"
+          ]
+        }
       ]
     },
     {
-      "username": "Smith",
-      "email": "s@mail.com",
-      "pwd": "123",
-      "status": "GroupAdmin",
-      "groups": []
-    },
-    {
-      "username": "Brad",
-      "email": "b@mail.com",
-      "pwd": "123",
-      "status": "Regular",
-      "groups": []
-    },
-    {
-      "username": "Ally",
-      "email": "al@mail.com",
-      "pwd": "123",
-      "status": "GroupAssis",
-      "groups": []
-    },
-    {
       "username": "Tony",
-      "email": "t@mail.com",
+      "email": "y@mail.com",
+      "pwd": "123",
+      "status": "SuperAdmin",
+      "groups": [
+        {
+          "groupName": "Drink",
+          "channels": [
+            "Lemonade",
+            "Soda"
+          ]
+        }
+      ]
+    },
+    {
+      "username": "Mike",
+      "email": "m@mail.com",
+      "pwd": "123",
+      "status": "SuperAdmin",
+      "groups": [
+        {
+          "groupName": "",
+          "channels": []
+        }
+      ]
+    },
+    {
+      "username": "Rory",
+      "email": "tracert@mail.com",
       "pwd": "123",
       "status": "GroupAdmin",
-      "groups": []
+      "groups": [
+        {
+          "groupName": "",
+          "channels": []
+        }
+      ]
     }
   ]
 }

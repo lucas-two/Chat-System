@@ -15,6 +15,5 @@ module.exports = (app) => {
       userObject = JSON.parse(data);
       res.send(userObject.users);
       });
-
   });
 }

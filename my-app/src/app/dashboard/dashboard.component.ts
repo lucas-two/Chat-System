@@ -14,58 +14,23 @@ export class DashboardComponent implements OnInit {
   statusUser = sessionStorage.getItem('statusUser');
   groupArr = this.groupsUser.split(',');
 
-  // Creating new user
-  pwdNew: string;
-  emailNew: string;
-  usernameNew: string;
-  statusNew: string;
-  newUser = {};
   allUsers = [];
   selectedGroup: string;
 
-  userNameObj = {}; // For delete function
+  newGroupName: string;
+  newChannelName: string;
+  newGroup = { groupName: this.newGroupName, channels: [] };
 
   constructor(private router: Router, private httpClient: HttpClient) {}
   ngOnInit() {
     this.getAllUsers();
-    console.log(this.groupsUser[0]);
-    console.log(this.selectedGroup);
   }
 
   getAllUsers() {
     this.httpClient.get(BACKEND_URL + '/getUsers')
       .subscribe((data: any) => {
         this.allUsers = data;
-        this.statusNew = 'Regular';
     });
-  }
-
-  createUser() {
-    this.newUser = {
-      username: this.usernameNew,
-      email: this.emailNew,
-      pwd: this.pwdNew,
-      status: this.statusNew
-    };
-    this.httpClient.post(BACKEND_URL + '/addUser', this.newUser)
-      .subscribe((data: any) => {
-        console.log('success');
-    });
-    this.pwdNew = '';
-    this.emailNew = '';
-    this.usernameNew = '';
-    this.statusNew = '';
-    this.getAllUsers();
-  }
-
-  // Eventually we need to get a callback function in here which can call getAllUsers();
-  deleteUser(userID, callback) {
-    this.userNameObj = {userID};
-    this.httpClient.post(BACKEND_URL + '/deleteUser', this.userNameObj)
-      .subscribe((data: any) => {
-      console.log('success');
-    });
-    callback();
   }
 
   hasSlectedGroup() {
@@ -75,4 +40,12 @@ export class DashboardComponent implements OnInit {
       return true;
     }
   }
+
+  addUserToGroup() {
+    this.httpClient.get(BACKEND_URL + '/addToGroup')
+      .subscribe((data: any) => {
+    });
+  }
+
+
 }

@@ -8,39 +8,6 @@
 </select>
 <br>
 
-<!-- Display all users in the group to Admin-->
-<ng-template [ngIf]="hasSlectedGroup()">
-<h5>Users in {{ selectedGroup }} Group</h5>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Username</th>
-      <th scope="col">Email</th>
-      <th scope="col">Status</th>
-      <th scope="col">Groups</th>
-      <th scope="col">Commands</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let user of allUsers; let i = index">
-          <td>{{i + 1}}</td>
-          <td>{{user.username}}</td>
-          <td>{{user.email}}</td>
-          <td>{{user.status}}</td>
-          <td>{{user.groups}}</td>
-          <td>
-            <button type="submit" class="btn btn-primary btn-sm" (click)="updateStatus(user.id, 'SuperAdmin')">Make SuperAdmin</button>
-            <button type="submit" class="btn btn-primary btn-sm" (click)="updateStatus(user.id, 'GroupAdmin')">Make GroupAdmin</button>
-            <button type="submit" class="btn btn-primary btn-sm" (click)="updateStatus(user.id, 'GroupAssis')">Make GroupAssis</button>
-            <button type="submit" class="btn btn-danger btn-sm" (click)="deleteUser(user.username, this.getAllUsers())">Delete</button>
-          </td>
-      </tr>
-  </tbody>
-  <button type="submit" class="btn btn-secondary btn-sm" (click)="getAllUsers()">Refresh</button>
-</table>
-</ng-template>
-
 <!-- Channels -->
 <ng-template [ngIf]="hasSlectedGroup()" [ngIfElse]="notSelectedGroup">
     <div>
