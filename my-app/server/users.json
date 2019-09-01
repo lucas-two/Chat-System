@@ -50,18 +50,6 @@
       ]
     },
     {
-      "username": "Rory",
-      "email": "tracert@mail.com",
-      "pwd": "123",
-      "status": "GroupAdmin",
-      "groups": [
-        {
-          "groupName": "",
-          "channels": []
-        }
-      ]
-    },
-    {
       "username": "Simon",
       "email": "albi@mail.com",
       "pwd": "123",
@@ -78,6 +66,18 @@
       "email": "alex@mail.com",
       "pwd": "123",
       "status": "Regular",
+      "groups": [
+        {
+          "groupName": "",
+          "channels": []
+        }
+      ]
+    },
+    {
+      "username": "Reuben",
+      "email": "reuben@mail.com",
+      "pwd": "123",
+      "status": "SuperAdmin",
       "groups": [
         {
           "groupName": "",

@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   statusUser = sessionStorage.getItem('statusUser');
 
   allUsers = []; // Array for all users in system
+  allGroups = []; // Array for all groups in system
   selectedGroup: string; // Current selected group
   selectedChannel: string; // Current selected group
 
@@ -23,11 +24,18 @@ export class DashboardComponent implements OnInit {
   newChannelName: string;
   newGroup = { groupName: this.newGroupName, channels: [] };
 
+  // Channel/group requests for inviting and removing users
+  groupRequests: string;
+
+  channelGroupRequests: string;
+  channelRequests: string;
+
   userText: string; // Stores what user writes in textbox
 
   constructor(private router: Router, private httpClient: HttpClient) {}
   ngOnInit() {
     this.getAllUsers();
+    this.getAllGroups();
   }
 
   // Getting all users in the system
@@ -35,6 +43,14 @@ export class DashboardComponent implements OnInit {
     this.httpClient.get(BACKEND_URL + '/getUsers')
       .subscribe((data: any) => {
         this.allUsers = data; // Get data of all users in storage
+    });
+  }
+
+  // Getting all groups in the system
+  getAllGroups() {
+    this.httpClient.get(BACKEND_URL + '/getGroups')
+      .subscribe((data: any) => {
+        this.allGroups = data; // Get data of all groups in storage
     });
   }
 
@@ -60,7 +76,38 @@ export class DashboardComponent implements OnInit {
   addUserToGroup() {
     this.httpClient.get(BACKEND_URL + '/addToGroup')
       .subscribe((data: any) => {
+        console.log('Success');
     });
+  }
+
+  // Checking if user is superadmin
+  isSuperAdmin() {
+    // Check session storage of current user's 'status'
+    if (sessionStorage.getItem('statusUser') === 'SuperAdmin') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+    // Checking if user is GroupAdmin
+    isGroupAdmin() {
+      // Check session storage of current user's 'status'
+      if (sessionStorage.getItem('statusUser') === 'GroupAdmin') {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+  // Checking if user is GroupAssis
+  isGroupAssis() {
+    // Check session storage of current user's 'status'
+    if (sessionStorage.getItem('statusUser') === 'GroupAssis') {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   // - Not yet implemented -
@@ -69,7 +116,9 @@ export class DashboardComponent implements OnInit {
     this.userText = ''; // Clear textbox
   }
 
+  // - Not yet implemented -
+  // Function for exiting channel
   exitChannel() {
-    this.selectedChannel = null;
+    this.selectedChannel = null; // Deselect channel
   }
 }

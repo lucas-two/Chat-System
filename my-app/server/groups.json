@@ -1,0 +1,25 @@
+{
+  "groups": [
+    {
+      "groupName": "Food",
+      "channels": [
+        "Pizza",
+        "Soda"
+      ]
+    },
+    {
+      "groupName": "Drink",
+      "channels": [
+        "Lemonade",
+        "Soda"
+      ]
+    },
+    {
+      "groupName": "Japan",
+      "channels": [
+        "Birds",
+        "Deer"
+      ]
+    }
+  ]
+}
