@@ -3,7 +3,8 @@ const fs = require('fs');
 module.exports = (app) => {
   app.post('/deleteUser',function(req,res){
 
-    console.log('Hit by Angular'); // DEBUGGING ONLY
+    // Debugging
+    console.log('Hit by Angular');
     if (!req.body) {
       return res.sendStatus(400);
     }

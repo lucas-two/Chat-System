@@ -9,14 +9,16 @@ const BACKEND_URL = 'http://localhost:3000';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  // Get user details from session storage
   usernameUser = sessionStorage.getItem('usernameUser');
   groupsUser = JSON.parse(sessionStorage.getItem('groupsUser'));
   statusUser = sessionStorage.getItem('statusUser');
 
-  allUsers = [];
-  selectedGroup: string;
-  selectedChannel: string;
+  allUsers = []; // Array for all users in system
+  selectedGroup: string; // Current selected group
+  selectedChannel: string; // Current selected group
 
+  // Variables for creating new groups
   newGroupName: string;
   newChannelName: string;
   newGroup = { groupName: this.newGroupName, channels: [] };
@@ -26,13 +28,15 @@ export class DashboardComponent implements OnInit {
     this.getAllUsers();
   }
 
+  // Getting all users in the system
   getAllUsers() {
     this.httpClient.get(BACKEND_URL + '/getUsers')
       .subscribe((data: any) => {
-        this.allUsers = data;
+        this.allUsers = data; // Get data of all users in storage
     });
   }
 
+  // Knowing if channels should be displayed
   hasSlectedGroup() {
     if (this.selectedGroup == null) {
       return false;
@@ -41,11 +45,10 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  // Adding a user to a group
   addUserToGroup() {
     this.httpClient.get(BACKEND_URL + '/addToGroup')
       .subscribe((data: any) => {
     });
   }
-
-
 }

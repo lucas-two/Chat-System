@@ -33,6 +33,7 @@ export class CreateuserComponent implements OnInit {
     this.getAllUsers();
   }
 
+  // Getting all users in the system
   getAllUsers() {
     this.httpClient.get(BACKEND_URL + '/getUsers')
       .subscribe((data: any) => {
@@ -42,6 +43,7 @@ export class CreateuserComponent implements OnInit {
     });
   }
 
+  // Creating new user
   createUser() {
     // Object for storing new user info
     this.newUser = {
@@ -77,6 +79,7 @@ export class CreateuserComponent implements OnInit {
     });
   }
 
+  // Deleting user
   deleteUser(userID) {
     this.userNameObj = {userID};
     this.httpClient.post(BACKEND_URL + '/deleteUser', this.userNameObj)
@@ -86,6 +89,7 @@ export class CreateuserComponent implements OnInit {
     });
   }
 
+  // Checking if user is superadmin
   isSuperAdmin() {
     // Check session storage of current user's 'status'
     if (sessionStorage.getItem('statusUser') === 'SuperAdmin') {
@@ -95,6 +99,7 @@ export class CreateuserComponent implements OnInit {
       }
   }
 
+  // Updating status of user
   updateStatus(userID, newStatus) {
     // Store username and new status in an object to send
     this.userNameObj = {userID, newStatus};

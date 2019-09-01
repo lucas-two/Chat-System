@@ -9,11 +9,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'my-app';
 
+  // Get the username of user
   getidUser() {
     return sessionStorage.getItem('usernameUser');
   }
 
-  // Checking if user is superAdmin
+  // Checking if user is SuperAdmin
   isSuperAdmin() {
     if (sessionStorage.getItem('statusUser') === 'SuperAdmin') {
       return true;
@@ -22,6 +23,7 @@ export class AppComponent {
       }
   }
 
+  // Checking if user is GroupAdmin
   isGroupAdmin() {
     if (sessionStorage.getItem('statusUser') === 'GroupAdmin') {
       return true;
@@ -30,6 +32,7 @@ export class AppComponent {
       }
   }
 
+  // Checking if user is logged in
   LoginStatus() {
     if (sessionStorage.getItem('usernameUser') == null) {
       return false;
@@ -38,6 +41,7 @@ export class AppComponent {
     }
   }
 
+  // Clear session if logout
   LogOut() {
     sessionStorage.clear();
   }
