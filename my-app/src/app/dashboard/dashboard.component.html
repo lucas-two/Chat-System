@@ -1,24 +1,33 @@
 <h1>Dashboard</h1>
 <h5>Welcome, {{usernameUser}} ({{ statusUser }})!</h5>
-<h5>Your Groups</h5>
+<br>
 
- <!-- Groups added to -->
+<!-- Groups -->
+<h5>Your Groups</h5>
 <select class="form-control" [(ngModel)]="selectedGroup">
-  <option *ngFor="let group of groupArr" [value]="group">{{ group }}</option>
+  <option *ngFor="let group of groupsUser">{{ group.groupName }}</option>
 </select>
 <br>
 
 <!-- Channels -->
 <ng-template [ngIf]="hasSlectedGroup()" [ngIfElse]="notSelectedGroup">
-    <div>
-        <h5>Your Channels</h5>
-        <select class="form-control" [(ngModel)]="selectedGroup">
-            <option *ngFor="let group of groupArr" [value]="group">{{ group }}</option>
-          </select>
-    </div>
+  <h5>Your Channels</h5>
+    <div *ngFor= "let group of groupsUser">
+        <!-- Get the channels of the selected group -->
+        <div *ngIf="group.groupName == selectedGroup">
+            <select class="form-control" [(ngModel)]="selectedChannel">
+                <option *ngFor="let channel of group.channels">{{ channel }}</option>
+            </select>
+        </div>
+      </div>
   </ng-template>
 
+  <!-- Display a message if group is not selected -->
   <ng-template #notSelectedGroup>
     <p class="text-muted">Select a Group to see your channels.</p>
   </ng-template>
+
+
+
+
 

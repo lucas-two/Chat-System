@@ -10,12 +10,12 @@ const BACKEND_URL = 'http://localhost:3000';
 })
 export class DashboardComponent implements OnInit {
   usernameUser = sessionStorage.getItem('usernameUser');
-  groupsUser = sessionStorage.getItem('groupsUser');
+  groupsUser = JSON.parse(sessionStorage.getItem('groupsUser'));
   statusUser = sessionStorage.getItem('statusUser');
-  groupArr = this.groupsUser.split(',');
 
   allUsers = [];
   selectedGroup: string;
+  selectedChannel: string;
 
   newGroupName: string;
   newChannelName: string;

@@ -13,7 +13,6 @@ export class CreateuserComponent implements OnInit {
   // Get user details from session storage
   usernameUser = sessionStorage.getItem('usernameUser');
   statusUser = sessionStorage.getItem('statusUser');
-  groupUser = JSON.parse(sessionStorage.getItem('groupsUser'));
 
   // Storing new user
   pwdNew: string;
