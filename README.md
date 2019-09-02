@@ -1,5 +1,5 @@
 # Chat System
-### Lucas Guertjens - s5132841 - Web Programming
+###### Lucas Guertjens - s5132841 - Web Programming
 
 ## Documentation
 
