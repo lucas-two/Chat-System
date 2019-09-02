@@ -147,13 +147,24 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  // Creating group
+  // deleting group
   deleteGroup(groupID) {
     this.simpleGroupObject = {group: groupID};
     this.httpClient.post(BACKEND_URL + '/deleteGroup', this.simpleGroupObject)
       .subscribe((data: any) => {
         console.log('Success');
         this.inputGroupName = '';
+        this.getAllGroups();
+      });
+  }
+
+  // deleting channel
+  deleteChannel(groupID, channelID) {
+    this.simpleGroupObject = {group: groupID, channel: channelID};
+    this.httpClient.post(BACKEND_URL + '/deleteChannel', this.simpleGroupObject)
+      .subscribe((data: any) => {
+        console.log('Success');
+        this.inputChannelName = '';
         this.getAllGroups();
       });
   }

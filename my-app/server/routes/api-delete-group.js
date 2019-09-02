@@ -13,7 +13,7 @@ module.exports = (app) => {
     let groupObject = { groups: [] };
 
     // Object for storing the user.json file
-    let userObject = { users: [] };
+    // let userObject = { users: [] };
 
     // Deleting the group
     fs.readFile('groups.json', 'utf8', (err, data) => {

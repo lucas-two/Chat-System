@@ -46,10 +46,6 @@
       "pwd": "123",
       "status": "Regular",
       "groups": [
-        {
-          "groupName": "Games",
-          "channels": []
-        }
       ]
     }
   ]
