@@ -88,7 +88,7 @@
         </div>
         <br>
         <!-- Buttons to invite / remove from group -->
-        <button type="submit" class="btn btn-primary btn-small" (click)="createGroup(inputGroupName)">Create Group</button>
+        <button type="submit" class="btn btn-primary btn-small" (click)="createGroup(inputGroupName)" (click)="getAllGroups()">Create Group</button>
         <button type="submit" class="btn btn-danger btn-small">Delete Group</button>
       </div>
   </div>
@@ -111,7 +111,7 @@
         </div>
         <br>
         <!-- Buttons to invite / remove from channel -->
-        <button type="submit" class="btn btn-primary btn-small">Create Channel</button>
+        <button type="submit" class="btn btn-primary btn-small" (click)="createChannel(groupOfInputChannel, inputChannelName)">Create Channel</button>
         <button type="submit" class="btn btn-danger btn-small">Delete Channel</button>
       </div>
   </div>

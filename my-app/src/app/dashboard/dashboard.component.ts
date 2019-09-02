@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
 
   userGroupObject = {}; // Object for storing group info (add/remove)
   groupObject = { groupName: '', channels: [] }; // Storing group object
+  channelObject = {}; // Storing channel object
 
   // Storing management related group/channel names
   selectedGroupManageG: string;
@@ -133,6 +134,17 @@ export class DashboardComponent implements OnInit {
         this.getAllGroups();
     });
   }
+
+    // Creating group
+    createChannel(groupID, channelID) {
+      this.channelObject = {group: groupID, channel: channelID};
+      this.httpClient.post(BACKEND_URL + '/createChannel', this.channelObject)
+        .subscribe((data: any) => {
+          console.log('Success');
+          this.inputGroupName = '';
+          this.getAllGroups();
+      });
+    }
 
   // Checking if user is superadmin
   isSuperAdmin() {
