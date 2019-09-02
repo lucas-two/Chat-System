@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   selectedChannel: string; // Current selected group
 
   userGroupObject = {}; // Object for storing group info (add/remove)
-  groupObject = {}; // Storing group object
+  groupObject = { groupName: '', channels: [] }; // Storing group object
 
   // Storing management related group/channel names
   selectedGroupManageG: string;
@@ -29,11 +29,10 @@ export class DashboardComponent implements OnInit {
   selectedChannelManageC: string;
   selectedUserManageC: string;
 
-
-  // Variables for creating new groups
-  newGroupName: string;
-  newChannelName: string;
-  newGroup = { groupName: this.newGroupName, channels: [] };
+  // Variables for creating new groups & channels
+  inputGroupName: string;
+  groupOfInputChannel: string;
+  inputChannelName: string;
 
   userText: string; // Stores what user writes in textbox
 
@@ -48,6 +47,9 @@ export class DashboardComponent implements OnInit {
     this.selectedUserManageC = '';
     this.selectedGroup = '';
     this.selectedChannel = '';
+    this.inputGroupName = '';
+    this.groupOfInputChannel = '';
+    this.inputChannelName = '';
   }
 
   // Getting all users in the system
@@ -118,6 +120,17 @@ export class DashboardComponent implements OnInit {
     this.httpClient.post(BACKEND_URL + '/removeFromChannel', this.userGroupObject)
       .subscribe((data: any) => {
         console.log('Success');
+    });
+  }
+
+  // Creating group
+  createGroup(groupID) {
+    this.groupObject = {groupName: groupID, channels: []};
+    this.httpClient.post(BACKEND_URL + '/createGroup', this.groupObject)
+      .subscribe((data: any) => {
+        console.log('Success');
+        this.inputGroupName = '';
+        this.getAllGroups();
     });
   }
 

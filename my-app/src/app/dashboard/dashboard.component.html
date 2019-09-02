@@ -3,72 +3,118 @@
 <br>
 
 <!-- Admin Tools -->
+<!-- Would like to move this into its own page eventually -->
 
+
+<div>
 <!-- Updating user groups and channels -->
-<h5>Manage User Groups & Channels</h5>
-<!-- Groups  -->
-<!-- NOTE: Eventually this will not show groups the user is already in -->
-<div class="card-body">
-    <h5 class="card-title">Groups</h5>
-    <div class="pull-left">
-        <div class="input-group">
+  <h5>Manage User Groups & Channels</h5>
+  <!-- Groups  -->
+  <!-- NOTE: Eventually this will not show groups the user is already in -->
+  <div class="card-body">
+      <h5 class="card-title">Groups</h5>
+      <div class="pull-left">
+          <div class="input-group">
 
-          <!-- Display Users -->
-          <select class="form-control" [(ngModel)]="selectedUserManageG">
-            <option value="" selected disabled hidden>Select User</option>
-            <option *ngFor="let user of allUsers">{{ user.username }}</option>
-          </select>
+            <!-- Display Users -->
+            <select class="form-control" [(ngModel)]="selectedUserManageG">
+              <option value="" selected disabled hidden>Select User</option>
+              <option *ngFor="let user of allUsers">{{ user.username }}</option>
+            </select>
 
-          <!-- Display Groups -->
-          <select class="form-control" [(ngModel)]="selectedGroupManageG">
-            <option value="" selected disabled hidden>Select Group</option>
-            <option *ngFor="let group of allGroups">{{ group.groupName }}</option>
-          </select>
-      </div>
-      <br>
-      <!-- Buttons to invite / remove from group -->
-      <button type="submit" class="btn btn-primary btn-small" (click)="addUserToGroup(selectedUserManageG, selectedGroupManageG)">Invite to Group</button>
-      <button type="submit" class="btn btn-danger btn-small" (click)="removeUserFromGroup(selectedUserManageG, selectedGroupManageG)">Remove from Group</button>
-    </div>
-</div>
-<br>
-
-<!-- Channels -->
-<!-- NOTE: This will eventually be improved such that the groups will only be groups the user is in
-Also it will not show channels the user is already in. -->
-<div class="card-body">
-    <h5 class="card-title">Channels</h5>
-    <div class="pull-left">
-        <div class="input-group">
-
-          <!-- Display Users -->
-          <select class="form-control" [(ngModel)]="selectedUserManageC">
-            <option value="" selected disabled hidden>Select User</option>
-            <option *ngFor="let user of allUsers">{{ user.username }}</option>
-          </select>
-
-          <!-- Display Groups -->
-          <select class="form-control" [(ngModel)]="selectedGroupManageC">
-            <option value="" selected disabled hidden>Select Group</option>
-            <option *ngFor="let group of allGroups">{{ group.groupName }}</option>
-          </select>
-
-          <!-- Display Channels -->
-          <div *ngFor= "let group of allGroups">
-              <!-- Get the channels of the selected group -->
-            <div *ngIf="group.groupName == selectedGroupManageC">
-              <select class="form-control" [(ngModel)]="selectedChannelManageC">
-                <option value="" selected disabled hidden>Select Channel</option>
-                <option *ngFor="let channel of group.channels">{{ channel }}</option>
-              </select>
-            </div>
+            <!-- Display Groups -->
+            <select class="form-control" [(ngModel)]="selectedGroupManageG">
+              <option value="" selected disabled hidden>Select Group</option>
+              <option *ngFor="let group of allGroups">{{ group.groupName }}</option>
+            </select>
         </div>
+        <br>
+        <!-- Buttons to invite / remove from group -->
+        <button type="submit" class="btn btn-primary btn-small" (click)="addUserToGroup(selectedUserManageG, selectedGroupManageG)">Invite to Group</button>
+        <button type="submit" class="btn btn-danger btn-small" (click)="removeUserFromGroup(selectedUserManageG, selectedGroupManageG)">Remove from Group</button>
       </div>
-      <br>
-      <!-- Buttons to invite / remove from channel -->
-      <button type="submit" class="btn btn-primary btn-small" (click)="addUserToChannel(selectedUserManageC, selectedGroupManageC, selectedChannelManageC)">Invite to Channel</button>
-      <button type="submit" class="btn btn-danger btn-small" (click)="removeUserFromChannel(selectedUserManageC, selectedGroupManageC, selectedChannelManageC)">Remove from Channel</button>
-    </div>
+  </div>
+
+
+  <!-- Channels -->
+  <!-- NOTE: This will eventually be improved such that the groups will only be groups the user is in
+  Also it will not show channels the user is already in. -->
+  <div class="card-body">
+      <h5 class="card-title">Channels</h5>
+      <div class="pull-left">
+          <div class="input-group">
+
+            <!-- Display Users -->
+            <select class="form-control" [(ngModel)]="selectedUserManageC">
+              <option value="" selected disabled hidden>Select User</option>
+              <option *ngFor="let user of allUsers">{{ user.username }}</option>
+            </select>
+
+            <!-- Display Groups -->
+            <select class="form-control" [(ngModel)]="selectedGroupManageC">
+              <option value="" selected disabled hidden>Select Group</option>
+              <option *ngFor="let group of allGroups">{{ group.groupName }}</option>
+            </select>
+
+            <!-- Display Channels -->
+            <div *ngFor= "let group of allGroups">
+                <!-- Get the channels of the selected group -->
+              <div *ngIf="group.groupName == selectedGroupManageC">
+                <select class="form-control" [(ngModel)]="selectedChannelManageC">
+                  <option value="" selected disabled hidden>Select Channel</option>
+                  <option *ngFor="let channel of group.channels">{{ channel }}</option>
+                </select>
+              </div>
+          </div>
+        </div>
+        <br>
+        <!-- Buttons to invite / remove from channel -->
+        <button type="submit" class="btn btn-primary btn-small" (click)="addUserToChannel(selectedUserManageC, selectedGroupManageC, selectedChannelManageC)">Invite to Channel</button>
+        <button type="submit" class="btn btn-danger btn-small" (click)="removeUserFromChannel(selectedUserManageC, selectedGroupManageC, selectedChannelManageC)">Remove from Channel</button>
+      </div>
+  </div>
+  <br>
+
+  <!-- Adding and removing groups & channels -->
+  <h5>Manage Groups & Channels</h5>
+
+  <!-- Groups -->
+  <div class="card-body">
+      <h5 class="card-title">Groups</h5>
+      <div class="pull-left">
+          <div class="input-group">
+            <!-- Input Group -->
+            <input class="form-control" placeholder="Enter group name" [(ngModel)]="inputGroupName">
+        </div>
+        <br>
+        <!-- Buttons to invite / remove from group -->
+        <button type="submit" class="btn btn-primary btn-small" (click)="createGroup(inputGroupName)">Create Group</button>
+        <button type="submit" class="btn btn-danger btn-small">Delete Group</button>
+      </div>
+  </div>
+
+  <!-- Channels -->
+  <div class="card-body">
+      <h5 class="card-title">Channels</h5>
+      <div class="pull-left">
+          <div class="input-group">
+
+            <!-- Display Groups -->
+            <select class="form-control" [(ngModel)]="groupOfInputChannel">
+              <option value="" selected disabled hidden>Select Group</option>
+              <option *ngFor="let group of allGroups">{{ group.groupName }}</option>
+            </select>
+
+            <!-- Input Channel -->
+            <input class="form-control" placeholder="Enter channel name" [(ngModel)]="inputChannelName">
+
+        </div>
+        <br>
+        <!-- Buttons to invite / remove from channel -->
+        <button type="submit" class="btn btn-primary btn-small">Create Channel</button>
+        <button type="submit" class="btn btn-danger btn-small">Delete Channel</button>
+      </div>
+  </div>
 </div>
 <br>
 
