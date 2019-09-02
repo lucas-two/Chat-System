@@ -94,6 +94,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  // Adding a user to a channel
   addUserToChannel(userID, groupID, channelID) {
     this.userGroupObject = {user: userID, group: groupID, channel: channelID};
     this.httpClient.post(BACKEND_URL + '/addToChannel', this.userGroupObject)
@@ -102,10 +103,19 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-
+  // Removing a user from a group
   removeUserFromGroup(userID, groupID) {
     this.userGroupObject = {user: userID, group: groupID};
     this.httpClient.post(BACKEND_URL + '/removeFromGroup', this.userGroupObject)
+      .subscribe((data: any) => {
+        console.log('Success');
+    });
+  }
+
+  // Removing a user from a channel
+  removeUserFromChannel(userID, groupID, channelID) {
+    this.userGroupObject = {user: userID, group: groupID, channel: channelID};
+    this.httpClient.post(BACKEND_URL + '/removeFromChannel', this.userGroupObject)
       .subscribe((data: any) => {
         console.log('Success');
     });

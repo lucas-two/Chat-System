@@ -26,6 +26,7 @@
           </select>
       </div>
       <br>
+      <!-- Buttons to invite / remove from group -->
       <button type="submit" class="btn btn-primary btn-small" (click)="addUserToGroup(selectedUserManageG, selectedGroupManageG)">Invite to Group</button>
       <button type="submit" class="btn btn-danger btn-small" (click)="removeUserFromGroup(selectedUserManageG, selectedGroupManageG)">Remove from Group</button>
     </div>
@@ -64,8 +65,9 @@ Also it will not show channels the user is already in. -->
         </div>
       </div>
       <br>
+      <!-- Buttons to invite / remove from channel -->
       <button type="submit" class="btn btn-primary btn-small" (click)="addUserToChannel(selectedUserManageC, selectedGroupManageC, selectedChannelManageC)">Invite to Channel</button>
-      <button type="submit" class="btn btn-danger btn-small">Remove from Channel</button>
+      <button type="submit" class="btn btn-danger btn-small" (click)="removeUserFromChannel(selectedUserManageC, selectedGroupManageC, selectedChannelManageC)">Remove from Channel</button>
     </div>
 </div>
 <br>

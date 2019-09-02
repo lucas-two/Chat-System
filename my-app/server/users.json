@@ -29,9 +29,7 @@
       "groups": [
         {
           "groupName": "Food",
-          "channels": [
-            "Pizza"
-          ]
+          "channels": []
         }
       ]
     }

@@ -20,3 +20,4 @@ require('./routes/api-get-groups.js')(app);
 require('./routes/api-add-to-group.js')(app);
 require('./routes/api-add-to-channel.js')(app);
 require('./routes/api-remove-from-group.js')(app);
+require('./routes/api-remove-from-channel.js')(app);
