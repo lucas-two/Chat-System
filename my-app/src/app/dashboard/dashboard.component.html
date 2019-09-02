@@ -6,12 +6,12 @@
 <!-- Would like to move this into its own page eventually -->
 
 
-<div>
+<div *ngIf="isSuperAdmin() || isGroupAdmin() || isGroupAssis()">
 <!-- Updating user groups and channels -->
   <h5>Manage User Groups & Channels</h5>
   <!-- Groups  -->
   <!-- NOTE: Eventually this will not show groups the user is already in -->
-  <div class="card-body">
+  <div class="card-body" *ngIf="!isGroupAssis()">
       <h5 class="card-title">Groups</h5>
       <div class="pull-left">
           <div class="input-group">
@@ -86,7 +86,7 @@
   <h5>Manage Groups & Channels</h5>
 
   <!-- Groups -->
-  <div class="card-body">
+  <div class="card-body" *ngIf="!isGroupAssis()">
       <h5 class="card-title">Groups</h5>
       <div class="pull-left">
           <div class="input-group">
@@ -122,12 +122,10 @@
         <button type="submit" class="btn btn-danger btn-small" (click)="deleteChannel(groupOfInputChannel, inputChannelName)">Delete Channel</button>
       </div>
   </div>
+  <br>
 </div>
-<br>
-
 
 <!-- Message board -->
-
 <!-- Groups -->
 <h5>Your Groups</h5>
 <select class="form-control" [(ngModel)]="selectedGroup">

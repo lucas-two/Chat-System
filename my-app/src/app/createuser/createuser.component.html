@@ -29,7 +29,7 @@
           <td *ngIf="user.username != usernameUser">
             <!-- Only show for appropriate status and if user isn't already a certain status -->
             <button type="submit" *ngIf="isSuperAdmin() && user.status != 'SuperAdmin'" class="btn btn-primary btn-sm" (click)="updateStatus(user.username, 'SuperAdmin')" (click)="getAllUsers()">Make SuperAdmin</button>
-            <button type="submit" *ngIf="user.status != 'GroupAdmin'" class="btn btn-primary btn-sm" (click)="updateStatus(user.username, 'GroupAdmin')" (click)="getAllUsers()">Make GroupAdmin</button>
+            <button type="submit" *ngIf="user.status != 'GroupAdmin' && isSuperAdmin()" class="btn btn-primary btn-sm" (click)="updateStatus(user.username, 'GroupAdmin')" (click)="getAllUsers()">Make GroupAdmin</button>
             <button type="submit" *ngIf="user.status != 'GroupAssis'" class="btn btn-primary btn-sm" (click)="updateStatus(user.username, 'GroupAssis')" (click)="getAllUsers()">Make GroupAssis</button>
             <button type="submit" *ngIf="isSuperAdmin()" class="btn btn-danger btn-sm" (click)="deleteUser(user.username)" (click)="getAllUsers()" >Delete</button>
           </td>
@@ -47,8 +47,8 @@
 <select class="form-control" [(ngModel)]="statusNew">
    <option>Regular</option>
    <option>GroupAssis</option>
-   <option>GroupAdmin</option>
-   <!-- Only give the option to create new user as Super Admin to Super Admins -->
+    <!-- Only give the option to create new user as Super Admin or Group Admin to Super Admins -->
+   <option *ngIf="isSuperAdmin()">GroupAdmin</option>
    <option *ngIf="isSuperAdmin()">SuperAdmin</option>
  </select>
 

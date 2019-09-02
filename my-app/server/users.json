@@ -37,16 +37,15 @@
       "username": "Amy",
       "email": "amm@mail.com",
       "pwd": "123",
-      "status": "Regular",
+      "status": "GroupAdmin",
       "groups": []
     },
     {
       "username": "Charles",
       "email": "c@mail.com",
       "pwd": "123",
-      "status": "Regular",
-      "groups": [
-      ]
+      "status": "GroupAssis",
+      "groups": []
     }
   ]
 }

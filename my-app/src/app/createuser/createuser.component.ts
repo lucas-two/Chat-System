@@ -99,6 +99,26 @@ export class CreateuserComponent implements OnInit {
       }
   }
 
+    // Checking if user is GroupAdmin
+    isGroupAdmin() {
+      // Check session storage of current user's 'status'
+      if (sessionStorage.getItem('statusUser') === 'GroupAdmin') {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+  // Checking if user is GroupAssis
+  isGroupAssis() {
+    // Check session storage of current user's 'status'
+    if (sessionStorage.getItem('statusUser') === 'GroupAssis') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   // Updating status of user
   updateStatus(userID, newStatus) {
     // Store username and new status in an object to send

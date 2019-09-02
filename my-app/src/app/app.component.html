@@ -13,7 +13,7 @@
     <!-- Only show Dashboard if logged in -->
     <li><a class='nav-link' *ngIf="LoginStatus()" [routerLink]="['/dashboard']">Dashboard</a></li>
     <!-- Only show the Manage users button if user is SuperAdmin or GroupAdmin -->
-    <li><a class='nav-link' *ngIf="isSuperAdmin() || isGroupAdmin() " [routerLink]="['/createuser']">Manage Users</a></li>
+    <li><a class='nav-link' *ngIf="isSuperAdmin() || isGroupAdmin()" [routerLink]="['/createuser']">Manage Users</a></li>
   </ul>
 </nav>
 <div class="container">
