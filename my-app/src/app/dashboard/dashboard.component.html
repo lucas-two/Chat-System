@@ -76,6 +76,13 @@
   <br>
 
   <!-- Adding and removing groups & channels -->
+  <!-- NOTE: This section is a little bit unstable due to time constraints -->
+  <!-- Things to be cleaned up:
+    - Dynamically refreshing list of groups/channels without needing to change pages
+    - Removal of text after creating/removing group or channel.
+    - Message that says group has been created/removed.
+    - Seperating the create/delete a little bit.
+    - Not allowing already existing channels/groups to be created. -->
   <h5>Manage Groups & Channels</h5>
 
   <!-- Groups -->
@@ -89,7 +96,7 @@
         <br>
         <!-- Buttons to invite / remove from group -->
         <button type="submit" class="btn btn-primary btn-small" (click)="createGroup(inputGroupName)" (click)="getAllGroups()">Create Group</button>
-        <button type="submit" class="btn btn-danger btn-small">Delete Group</button>
+        <button type="submit" class="btn btn-danger btn-small" (click)="deleteGroup(inputGroupName)">Delete Group</button>
       </div>
   </div>
 

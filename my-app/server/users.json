@@ -32,6 +32,25 @@
           "channels": []
         }
       ]
+    },
+    {
+      "username": "Amy",
+      "email": "amm@mail.com",
+      "pwd": "123",
+      "status": "Regular",
+      "groups": []
+    },
+    {
+      "username": "Charles",
+      "email": "c@mail.com",
+      "pwd": "123",
+      "status": "Regular",
+      "groups": [
+        {
+          "groupName": "Games",
+          "channels": []
+        }
+      ]
     }
   ]
 }

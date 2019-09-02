@@ -21,33 +21,6 @@
         "Birds",
         "Deer"
       ]
-    },
-    {
-      "groupName": "Books",
-      "channels": [
-        "Fiction",
-        "History"
-      ]
-    },
-    {
-      "groupName": "Monsters",
-      "channels": []
-    },
-    {
-      "groupName": "Movies",
-      "channels": []
-    },
-    {
-      "groupName": "Animals",
-      "channels": []
-    },
-    {
-      "groupName": "Building",
-      "channels": []
-    },
-    {
-      "groupName": "Games",
-      "channels": []
     }
   ]
 }
