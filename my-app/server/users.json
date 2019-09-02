@@ -14,10 +14,9 @@
           ]
         },
         {
-          "groupName": "Japan",
+          "groupName": "Drink",
           "channels": [
-            "Birds",
-            "Deer"
+            "Soda"
           ]
         }
       ]
@@ -29,47 +28,10 @@
       "status": "SuperAdmin",
       "groups": [
         {
-          "groupName": "Drink",
+          "groupName": "Food",
           "channels": [
-            "Lemonade",
-            "Soda"
+            "Pizza"
           ]
-        }
-      ]
-    },
-    {
-      "username": "Alex",
-      "email": "Alex@mail.com",
-      "pwd": "123",
-      "status": "GroupAdmin",
-      "groups": [
-        {
-          "groupName": "Japan",
-          "channels": []
-        },
-        {
-          "groupName": "Japan",
-          "channels": []
-        }
-      ]
-    },
-    {
-      "username": "Bob",
-      "email": "b@mail.com",
-      "pwd": "123",
-      "status": "GroupAdmin",
-      "groups": [
-        {
-          "groupName": "Drink",
-          "channels": []
-        },
-        {
-          "groupName": "Japan",
-          "channels": []
-        },
-        {
-          "groupName": "Drink",
-          "channels": []
         }
       ]
     }

@@ -6,8 +6,8 @@
 
 <!-- Updating user groups and channels -->
 <h5>Manage User Groups & Channels</h5>
-
 <!-- Groups  -->
+<!-- NOTE: Eventually this will not show groups the user is already in -->
 <div class="card-body">
     <h5 class="card-title">Groups</h5>
     <div class="pull-left">
@@ -27,12 +27,14 @@
       </div>
       <br>
       <button type="submit" class="btn btn-primary btn-small" (click)="addUserToGroup(selectedUserManageG, selectedGroupManageG)">Invite to Group</button>
-      <button type="submit" class="btn btn-danger btn-small">Remove from Group</button>
+      <button type="submit" class="btn btn-danger btn-small" (click)="removeUserFromGroup(selectedUserManageG, selectedGroupManageG)">Remove from Group</button>
     </div>
 </div>
 <br>
 
 <!-- Channels -->
+<!-- NOTE: This will eventually be improved such that the groups will only be groups the user is in
+Also it will not show channels the user is already in. -->
 <div class="card-body">
     <h5 class="card-title">Channels</h5>
     <div class="pull-left">
@@ -62,13 +64,11 @@
         </div>
       </div>
       <br>
-      <button type="submit" class="btn btn-primary btn-small">Invite to Channel</button>
+      <button type="submit" class="btn btn-primary btn-small" (click)="addUserToChannel(selectedUserManageC, selectedGroupManageC, selectedChannelManageC)">Invite to Channel</button>
       <button type="submit" class="btn btn-danger btn-small">Remove from Channel</button>
     </div>
 </div>
 <br>
-
-
 
 
 <!-- Message board -->

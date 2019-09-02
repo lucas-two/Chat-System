@@ -94,6 +94,23 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  addUserToChannel(userID, groupID, channelID) {
+    this.userGroupObject = {user: userID, group: groupID, channel: channelID};
+    this.httpClient.post(BACKEND_URL + '/addToChannel', this.userGroupObject)
+      .subscribe((data: any) => {
+        console.log('Success');
+    });
+  }
+
+
+  removeUserFromGroup(userID, groupID) {
+    this.userGroupObject = {user: userID, group: groupID};
+    this.httpClient.post(BACKEND_URL + '/removeFromGroup', this.userGroupObject)
+      .subscribe((data: any) => {
+        console.log('Success');
+    });
+  }
+
   // Checking if user is superadmin
   isSuperAdmin() {
     // Check session storage of current user's 'status'
