@@ -18,17 +18,9 @@
           "channels": [
             "Soda"
           ]
-        }
-      ]
-    },
-    {
-      "username": "Tony",
-      "email": "y@mail.com",
-      "pwd": "123",
-      "status": "SuperAdmin",
-      "groups": [
+        },
         {
-          "groupName": "Food",
+          "groupName": "mygroup",
           "channels": []
         }
       ]
@@ -37,14 +29,14 @@
       "username": "Amy",
       "email": "amm@mail.com",
       "pwd": "123",
-      "status": "GroupAdmin",
+      "status": "GroupAssis",
       "groups": []
     },
     {
       "username": "Charles",
       "email": "c@mail.com",
       "pwd": "123",
-      "status": "GroupAssis",
+      "status": "GroupAdmin",
       "groups": []
     }
   ]
