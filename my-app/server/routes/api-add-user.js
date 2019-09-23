@@ -1,6 +1,4 @@
-const fs = require('fs');
-
-module.exports = (app) => {
+module.exports = (db, app) => {
   app.post('/addUser',function(req,res){
 
     // Debugging
@@ -9,31 +7,27 @@ module.exports = (app) => {
       return res.sendStatus(400);
     }
 
-    // Template object for storing the users.json file
-    let userObject = { users: [] };
-    let existing = false; // Flag for if user is existing or not.
+    const userObj = req.body; // Store the sent user object
+    var existing = true; // Flag for wheather user was existing
 
-    // Read in the users data from JSON
-    fs.readFile('users.json' , 'utf8', (err, data) => {
-      userObject = JSON.parse(data); // Copy users JSON into the template object
+    const collection = db.collection('users');
 
-      // Check if user is already existing
-      for (let i = 0; i < userObject.users.length; i++) {
-        if(req.body.username === userObject.users[i].username || req.body.email === userObject.users[i].email){
-          existing = true; // Set flag if is existing
-        }
+    // Is there a duplicate email or username?
+    collection.find({"$or": [{"username": userObj.username}, {"email": userObj.email}]}).count((err,count)=>{
+
+      // If there are no duplicates
+      if (count == 0) {
+        // Add the user
+        collection.insertOne(userObj, () => {
+          existing = false;
+          res.send(existing);
+        });
       }
-      if(existing === false) {
-        userObject.users.push(req.body); // Add the user to the object
-        json = JSON.stringify(userObject, null, 2); // Convert new object back to JSON
-        fs.writeFile('users.json', json, 'utf8', finished); // Write JSON back to file
+
+      // If there are duplicates
+      else {
+        res.send(existing);
       }
-      res.send(existing); // Send existing flag
     });
-
-    // Debugging callback function
-    function finished(err) {
-      console.log('Successfuly added user!');
-    }
   });
 }
