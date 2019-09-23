@@ -26,12 +26,13 @@ MongoClient.connect(url, {poolSize:10,useNewUrlParser: true,useUnifiedTopology: 
     require('./routes/api-get-users.js')(db,app);
     require('./routes/api-get-groups.js')(db,app);
     require('./routes/api-add-group.js')(db,app);
+    require('./routes/api-add-channel.js')(db,app);
+
 });
 
 
 
-// require('./routes/api-add-channel.js')(app);
-
+//
 // require('./routes/api-update-status.js')(app);
 
 // require('./routes/api-add-to-group.js')(app);
