@@ -1,20 +1,17 @@
-const fs = require('fs');
-
-module.exports = (app) => {
+module.exports = (db, app) => {
   app.get('/getUsers',function(req,res){
 
     // Debugging
-    console.log('Hit by Angular');
+    console.log('api-get-users hit angular');
     if (!req.body) {
       return res.sendStatus(400);
     }
 
-    // Object for storing the users.json file
-    let userObject = { users: [] };
+    const collection = db.collection('users');
 
-    fs.readFile('users.json', 'utf8', (err, data) => {
-      userObject = JSON.parse(data);
-      res.send(userObject.users);
-      });
+    // Get all users
+    collection.find({}).toArray((err,doc)=>{
+      res.send(doc);
+    });
   });
 }

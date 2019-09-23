@@ -23,7 +23,8 @@ MongoClient.connect(url, {poolSize:10,useNewUrlParser: true,useUnifiedTopology: 
     require('./listen.js')(http);
     require('./routes/api-login.js')(db,app);
     require('./routes/api-add-user.js')(db,app);
-    // require('./routes/api-get-users.js')(app);
+    require('./routes/api-get-users.js')(db,app);
+    require('./routes/api-get-groups.js')(db,app);
 
 });
 
@@ -35,7 +36,6 @@ MongoClient.connect(url, {poolSize:10,useNewUrlParser: true,useUnifiedTopology: 
 
 // require('./routes/api-delete-user.js')(app);
 // require('./routes/api-update-status.js')(app);
-// require('./routes/api-get-groups.js')(app);
 // require('./routes/api-add-to-group.js')(app);
 // require('./routes/api-add-to-channel.js')(app);
 // require('./routes/api-remove-from-group.js')(app);

@@ -1,6 +1,4 @@
-const fs = require('fs');
-
-module.exports = (app) => {
+module.exports = (db, app) => {
   app.get('/getGroups',function(req,res){
 
     // Debugging
@@ -9,12 +7,11 @@ module.exports = (app) => {
       return res.sendStatus(400);
     }
 
-    // Object for storing the users.json file
-    let groupObject = { groups: [] };
+    const collection = db.collection('groups');
 
-    fs.readFile('groups.json', 'utf8', (err, data) => {
-      groupObject = JSON.parse(data);
-      res.send(groupObject.groups);
-      });
+    // Get all groups
+    collection.find({}).toArray((err,doc)=>{
+      res.send(doc);
+    });
   });
 }
