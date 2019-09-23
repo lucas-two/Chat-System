@@ -4,7 +4,7 @@ module.exports = (app) => {
   app.post('/removeFromChannel',function(req,res){
 
     // Debugging
-    console.log('Hit by Angular');
+    console.log('api-remove-from-channel hit angular');
     if (!req.body) {
       return res.sendStatus(400);
     }

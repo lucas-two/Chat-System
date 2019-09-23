@@ -4,7 +4,7 @@ module.exports = (app) => {
   app.post('/removeFromGroup',function(req,res){
 
     // Debugging
-    console.log('Hit by Angular');
+    console.log('api-remove-from-group hit angular');
     if (!req.body) {
       return res.sendStatus(400);
     }

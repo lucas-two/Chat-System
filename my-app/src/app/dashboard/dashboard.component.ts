@@ -136,7 +136,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  // Creating group
+  // Creating channel
   createChannel(groupID, channelID) {
     this.channelObject = {group: groupID, channel: channelID};
     this.httpClient.post(BACKEND_URL + '/createChannel', this.channelObject)

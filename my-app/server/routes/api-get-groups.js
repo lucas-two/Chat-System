@@ -2,7 +2,7 @@ module.exports = (db, app) => {
   app.get('/getGroups',function(req,res){
 
     // Debugging
-    console.log('Hit by Angular');
+    console.log('api-get-groups hit angular');
     if (!req.body) {
       return res.sendStatus(400);
     }

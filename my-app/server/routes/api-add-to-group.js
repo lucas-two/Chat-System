@@ -4,7 +4,7 @@ module.exports = (app) => {
   app.post('/addToGroup',function(req,res){
 
     // Debugging
-    console.log('Hit by Angular');
+    console.log('api-add-to-group hit angular');
     if (!req.body) {
       return res.sendStatus(400);
     }

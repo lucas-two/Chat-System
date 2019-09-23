@@ -4,7 +4,7 @@ module.exports = (app) => {
   app.post('/deleteUser',function(req,res){
 
     // Debugging
-    console.log('Hit by Angular');
+    console.log('api-delete-user hit angular');
     if (!req.body) {
       return res.sendStatus(400);
     }

@@ -2,7 +2,7 @@ module.exports = (db, app) => {
   app.post('/addUser',function(req,res){
 
     // Debugging
-    console.log('Hit by Angular');
+    console.log('api-add-user hit angular');
     if (!req.body) {
       return res.sendStatus(400);
     }

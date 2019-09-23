@@ -1,31 +1,20 @@
-const fs = require('fs');
-
-module.exports = (app) => {
+module.exports = (db, app) => {
   app.post('/updateStatus',function(req,res){
 
     // Debugging
-    console.log('Hit by Angular');
+    console.log('api-update-status hit angular');
     if (!req.body) {
       return res.sendStatus(400);
     }
 
-    // Object for storing the users.json file
-    let userObject = { users: [] };
+    // Store user object (name & status)
+    let userObj = req.body;
 
-    fs.readFile('users.json', 'utf8', (err, data) => {
-      userObject = JSON.parse(data); // Set our object to the users JSON object
+    const collection = db.collection('users');
 
-      for (let i = 0; i < userObject.users.length; i++) {
-        if (req.body.userID == userObject.users[i].username) {
-          userObject.users[i].status = req.body.newStatus;
-          json = JSON.stringify(userObject, null, 2); // Convert it back to JSON
-          fs.writeFile('users.json', json, 'utf8', finished); // Write it back
-        }
-      }
+    // Update the status of user
+    collection.updateOne({username: userObj.username}, {$set: {status: userObj.status}}, () => {
+      res.send({'ok': 1});
     });
-
-    function finished(err) {
-      console.log('Successfuly updated user status!');
-    }
   });
 }

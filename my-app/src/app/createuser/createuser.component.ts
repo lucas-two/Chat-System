@@ -122,7 +122,7 @@ export class CreateuserComponent implements OnInit {
   // Updating status of user
   updateStatus(userID, newStatus) {
     // Store username and new status in an object to send
-    this.userNameObj = {userID, newStatus};
+    this.userNameObj = {username: userID, status: newStatus};
     this.httpClient.post(BACKEND_URL + '/updateStatus', this.userNameObj)
       .subscribe((data: any) => {
         console.log('success');
