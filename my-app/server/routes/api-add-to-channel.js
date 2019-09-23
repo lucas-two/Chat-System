@@ -1,6 +1,4 @@
-const fs = require('fs');
-
-module.exports = (app) => {
+module.exports = (db, app) => {
   app.post('/addToChannel',function(req,res){
 
     // Debugging
@@ -9,32 +7,27 @@ module.exports = (app) => {
       return res.sendStatus(400);
     }
 
-    // Template object for storing the users.json file
-    let userObject = { users: [] };
+    let userGroupObj = req.body; // username & groupname & new channel name
+    let existing = true; // Flag for if user is already in the group
 
-    // Read in the users data from JSON
-    fs.readFile('users.json', 'utf8', (err, data) => {
-      userObject = JSON.parse(data); // Set our object to the users JSON object
-      // Find correct user
-      for (let i = 0; i < userObject.users.length; i++) {
-        if (req.body.user == userObject.users[i].username) {
+    const collection = db.collection('users');
 
-          // Find correct group
-          for (let j = 0; j < userObject.users[i].groups.length; j++) {
-            if (req.body.group == userObject.users[i].groups[j].groupName) {
+    collection.find({"username": userGroupObj.user, "groups": [{"groupName": userGroupObj.group, "channels": [userGroupObj.channel]}]}).count((err,count) => {
 
-              userObject.users[i].groups[j].channels.push(req.body.channel); // Push channel to the group
-              json = JSON.stringify(userObject, null, 2); // Convert it back to JSON
-              fs.writeFile('users.json', json, 'utf8', finished); // Write it back
-            }
-          }
-        }
+      // If not in the channel already
+      if (count == 0) {
+        console.log("yay");
+        collection.updateOne({"username": userGroupObj.user, "groups": [{"groupName": userGroupObj.group}]}, {$push: {"channels": userGroupObj.channel}}).then(() => {
+          existing = false;
+          res.send(existing);
+        });
+      }
+
+      // If already in group
+      else {
+        console.log("nay");
+        res.send(existing);
       }
     });
-
-    // Debugging callback function
-    function finished(err) {
-      console.log('Successfuly added user to group!');
-    }
   });
 }
