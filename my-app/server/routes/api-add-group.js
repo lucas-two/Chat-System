@@ -1,30 +1,32 @@
-const fs = require('fs');
-
-module.exports = (app) => {
+module.exports = (db, app) => {
   app.post('/createGroup',function(req,res){
 
     // Debugging
-    console.log('Hit by Angular');
+    console.log('api-add-group hit angular');
     if (!req.body) {
       return res.sendStatus(400);
     }
 
-    // Object for storing the users.json file
-    let groupObject = { groups: [] };
+    var existing = true; // Flag for if group already existing
+    const groupObj = req.body; // Store the sent user object
 
-    fs.readFile('groups.json', 'utf8', (err, data) => {
+    const collection = db.collection('groups');
 
-        //NOTE: should later add checking to see if group already exists
+    collection.find({"groupName" : groupObj.groupName}).count((err,count)=>{
 
-        groupObject = JSON.parse(data); // Parse the JSON
-        groupObject.groups.push(req.body); // Add the group to the object
-        json = JSON.stringify(groupObject, null, 2); // Convert new object back to JSON
-        fs.writeFile('groups.json', json, 'utf8', finished); // Write JSON back to file
-      });
+      // If there are no duplicates
+      if (count == 0) {
+        // Add the group
+        collection.insertOne(groupObj, () => {
+          existing = false;
+          res.send(existing);
+        });
+      }
 
-    // Debugging callback function
-    function finished(err) {
-      console.log('Successfuly created group!');
-    }
+      // If there are duplicates
+      else {
+        res.send(existing);
+      }
+    });
   });
 }
