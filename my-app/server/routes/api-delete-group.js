@@ -1,6 +1,4 @@
-const fs = require('fs');
-
-module.exports = (app) => {
+module.exports = (db,app) => {
   app.post('/deleteGroup',function(req,res){
 
     // Debugging
@@ -9,11 +7,7 @@ module.exports = (app) => {
       return res.sendStatus(400);
     }
 
-    // Object for storing the groups.json file
-    let groupObject = { groups: [] };
 
-    // Object for storing the user.json file
-    // let userObject = { users: [] };
 
     // Deleting the group
     fs.readFile('groups.json', 'utf8', (err, data) => {

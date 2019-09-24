@@ -80,8 +80,8 @@ export class CreateuserComponent implements OnInit {
   }
 
   // Deleting user
-  deleteUser(userID) {
-    this.userNameObj = {userID};
+  deleteUser(username) {
+    this.userNameObj = {username};
     this.httpClient.post(BACKEND_URL + '/deleteUser', this.userNameObj)
       .subscribe((data: any) => {
       console.log('success');

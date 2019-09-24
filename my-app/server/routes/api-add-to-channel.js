@@ -17,7 +17,7 @@ module.exports = (db, app) => {
       // If not in the channel already
       if (count == 0) {
         console.log("yay");
-        collection.updateOne({"username": userGroupObj.user, "groups": [{"groupName": userGroupObj.group}]}, {$push: {"channels": userGroupObj.channel}}).then(() => {
+        collection.updateOne({"username" : userGroupObj.user, "groups.groupName" : userGroupObj.group}, {$addToSet : { "groups.channels" : userGroupObj.channel}}).then(() => {
           existing = false;
           res.send(existing);
         });
