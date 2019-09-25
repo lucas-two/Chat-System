@@ -1,6 +1,4 @@
-const fs = require('fs');
-
-module.exports = (app) => {
+module.exports = (db,app) => {
   app.post('/removeFromGroup',function(req,res){
 
     // Debugging
@@ -8,32 +6,27 @@ module.exports = (app) => {
     if (!req.body) {
       return res.sendStatus(400);
     }
+    let userGroupObj = req.body; // User object
+    let existing = true; // Flag for if existing
 
-    // Template object for storing the users.json file
-    let userObject = { users: [] };
+    const collection = db.collection('users');
 
-    // Read in the users data from JSON
-    fs.readFile('users.json', 'utf8', (err, data) => {
-      userObject = JSON.parse(data); // Set our object to the users JSON object
-      // Find correct user
-      for (let i = 0; i < userObject.users.length; i++) {
-        if (req.body.user == userObject.users[i].username) {
+    // Check if actually in the group
+    collection.find({"username": userGroupObj.user, "groups.groupName" : userGroupObj.group}).count((err,count) => {
 
-          // Find correct group
-          for (let j = 0; j < userObject.users[i].groups.length; j++) {
-            if (req.body.group == userObject.users[i].groups[j].groupName) {
-                userObject.users[i].groups.splice(j, 1); // Delete the group
-                json = JSON.stringify(userObject, null, 2); // Convert it back to JSON
-                fs.writeFile('users.json', json, 'utf8', finished); // Write it back
-            }
-          }
-        }
+      // If they are in the group
+      if (count == 1) {
+        // Remove from group
+        collection.updateOne({"username": userGroupObj.user}, {$pull: {"groups": {"groupName": userGroupObj.group}}}).then(() => {
+          existing = false;
+          res.send(existing);
+        });
+      }
+
+      // If they are not
+      else {
+        res.send(existing);
       }
     });
-
-    // Debugging callback function
-    function finished(err) {
-      console.log('Successfuly removed user from group!');
-    }
   });
 }

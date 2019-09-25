@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-module.exports = (app) => {
+module.exports = (db,app) => {
   app.post('/removeFromChannel',function(req,res){
 
     // Debugging
@@ -9,37 +9,27 @@ module.exports = (app) => {
       return res.sendStatus(400);
     }
 
-    // Template object for storing the users.json file
-    let userObject = { users: [] };
+    let userGroupObj = req.body; // User object
+    let existing = true; // Flag for if existing
 
-    // Read in the users data from JSON
-    fs.readFile('users.json', 'utf8', (err, data) => {
-      userObject = JSON.parse(data); // Set our object to the users JSON object
-      // Find correct user
-      for (let i = 0; i < userObject.users.length; i++) {
-        if (req.body.user == userObject.users[i].username) {
+    const collection = db.collection('users');
 
-          // Find correct group
-          for (let j = 0; j < userObject.users[i].groups.length; j++) {
-            if (req.body.group == userObject.users[i].groups[j].groupName) {
+    // Check if actually in the channel
+    collection.find({"username": userGroupObj.user, "groups.groupName" : userGroupObj.group, "groups.channels" : userGroupObj.channel }).count((err,count) => {
 
-              // Find correct channel
-              for (let k = 0; k < userObject.users[i].groups[j].channels.length; k++) {
-                if (req.body.channel == userObject.users[i].groups[j].channels[k]) {
-                  userObject.users[i].groups[j].channels.splice(k, 1); // Delete the channel
-                  json = JSON.stringify(userObject, null, 2); // Convert it back to JSON
-                  fs.writeFile('users.json', json, 'utf8', finished); // Write it back
-                }
-              }
-            }
-          }
-        }
+      // If they are in the channel
+      if (count == 1) {
+        // Remove from channel
+        collection.updateOne({"username": userGroupObj.user, "groups.groupName" : userGroupObj.group}, {$pull: {"groups.$.channels": userGroupObj.channel}}).then(() => {
+          existing = false;
+          res.send(existing);
+        });
+      }
+
+      // If they are not
+      else {
+        res.send(existing);
       }
     });
-
-    // Debugging callback function
-    function finished(err) {
-      console.log('Successfuly removed user from channel!');
-    }
   });
 }

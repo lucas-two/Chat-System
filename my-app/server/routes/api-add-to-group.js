@@ -16,7 +16,7 @@ module.exports = (db,app) => {
     const collection = db.collection('users');
 
     // Check if already in the group
-    collection.find(({"username": userGroupObj.user, "groups.groupName" : groupObj.groupName})).count((err,count) => {
+    collection.find({"username": userGroupObj.user, "groups.groupName" : groupObj.groupName}).count((err,count) => {
 
       // If there are no duplicates
       if (count == 0) {
