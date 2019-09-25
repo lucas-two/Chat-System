@@ -33,12 +33,6 @@ MongoClient.connect(url, {poolSize:10,useNewUrlParser: true,useUnifiedTopology: 
     require('./routes/api-add-to-channel.js')(db,app);
     require('./routes/api-remove-from-group.js')(db,app);
     require('./routes/api-remove-from-channel.js')(db,app);
-
+    require('./routes/api-delete-group.js')(db,app);
+    require('./routes/api-delete-channel.js')(db,app);
 });
-
-
-//
-//
-
-// require('./routes/api-delete-group.js')(app);
-// require('./routes/api-delete-channel.js')(app);

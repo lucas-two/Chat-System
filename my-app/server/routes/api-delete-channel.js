@@ -1,6 +1,4 @@
-const fs = require('fs');
-
-module.exports = (app) => {
+module.exports = (db,app) => {
   app.post('/deleteChannel',function(req,res){
 
     // Debugging
@@ -9,32 +7,31 @@ module.exports = (app) => {
       return res.sendStatus(400);
     }
 
-    // Object for storing the groups.json file
-    let groupObject = { groups: [] };
+    let groupObj = req.body;
+    let existing = true; // Flag for if existing
 
-    // Deleting the channel
-    fs.readFile('groups.json', 'utf8', (err, data) => {
-      groupObject = JSON.parse(data); // Parse the JSON
-      for (let i = 0; i < groupObject.groups.length; i++) {
-        // If we find correct group
-        if (req.body.group == groupObject.groups[i].groupName) {
-          for (let j = 0; j < groupObject.groups[i].channels.length; j++) {
-            // If we find correct channel
-            if (req.body.channel == groupObject.groups[i].channels[j]) {
-              groupObject.groups[i].channels.splice(j, 1); // Remove group
-              json = JSON.stringify(groupObject, null, 2); // Convert new object back to JSON
-              fs.writeFile('groups.json', json, 'utf8', finished); // Write JSON back to file
-            }
-          }
-        }
+    const collection = db.collection('groups');
+    const collectionTwo = db.collection('users');
+
+    // Check if channel exists
+    collection.find({"groupName": groupObj.group, "channels": groupObj.channel}).count((err,count) => {
+
+      // If it does exist
+      if (count == 1) {
+        // Remove channel
+        collection.updateOne({"groupName" : groupObj.group}, {$pull: {"channels": groupObj.channel}}).then(() => {
+          // Remove users from the channel
+          collectionTwo.updateMany({"groups.groupName" : groupObj.group}, {$pull: {"groups.$.channels": groupObj.channel}}).then(() => {
+            existing = false;
+            res.send(existing);
+          });
+        });
+      }
+
+      // If it dose not
+      else {
+        res.send(existing);
       }
     });
-
-    // NOTE: Removing all users from the channel was not implement with similar trouble to groups.
-
-    function finished(err) {
-      console.log('Successfuly deleted channel!');
-    }
-
   });
 }
