@@ -27,6 +27,9 @@ export class CreateuserComponent implements OnInit {
   existingUserError: boolean; // Flag if user already existed
   userCreated: boolean; // Flag if user was created successfully
 
+  selectedFile = null; // File we have selected
+  imagePath = '';
+
   constructor(private router: Router, private httpClient: HttpClient) { }
 
   ngOnInit() {
@@ -129,4 +132,23 @@ export class CreateuserComponent implements OnInit {
         this.getAllUsers(); // Update list of users
       });
     }
+
+  // Selecting a file
+  onFileSelected(event) {
+    console.log(event);
+    this.selectedFile = event.target.files[0];
+  }
+
+  onUpload() {
+    const fd = new FormData();
+    fd.append('image', this.selectedFile, this.selectedFile.name);
+
+    this.httpClient.post(BACKEND_URL + '/imageUpload', fd)
+      .subscribe((data: any) => {
+        this.imagePath = data.filename;
+        console.log(data.filename + ' ' + data.size);
+      });
+  }
+
+
 }

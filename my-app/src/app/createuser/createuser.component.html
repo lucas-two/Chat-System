@@ -57,3 +57,6 @@
 <!-- Success and failure messages -->
 <p *ngIf="existingUserError" class="text-danger text-center"> * User Already Exists</p>
 <p *ngIf="userCreated" class="text-success text-center"> * User Created</p>
+
+<input type="file" class="form-control" (change)="onFileSelected($event)" name="uploadfile" id="uploadfile">
+<button class="btn btn-primary" type="button" (click)="onUpload()">Submit</button>
