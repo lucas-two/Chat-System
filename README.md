@@ -15,13 +15,39 @@ The application used 2 major data structures, stored in a mongo database, for st
 
 <b>Users:</b>
 
-username
-email
-pwd
-status
-groups[]
-  | _ _ _ groupName
-  | _ _ _ channels[]
+  "users": [
+    {
+      "username": "Alice",
+      "email": "a@mail.com",
+      "pwd": "123",
+      "status": "SuperAdmin",
+      "groups": [
+        {
+          "groupName": "Food",
+          "channels": [
+            "Pizza",
+            "Soda"
+          ]
+        },
+        {
+          "groupName": "Drink",
+          "channels": [
+            "Soda"
+          ]
+        },
+        {
+          "groupName": "mygroup",
+          "channels": []
+        }
+      ]
+    },
+    {
+      "username": "Amy",
+      "email": "amm@mail.com",
+      "pwd": "123",
+      "status": "GroupAssis",
+      "groups": []
+    },
 
 
 <b>Groups:</b>
