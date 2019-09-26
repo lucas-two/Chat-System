@@ -11,7 +11,24 @@ The organisation of the repository aims to be clear and easy to navigate. It sto
 Throughout the project, Git commands were frequently used to provide version control. Firstly, git clone was used to initially download the repository from GitHub onto my local machine. In addition, while updating the application, frequent usage of git add, commit and push were used to save progress and milestones. Lastly, 2 branches were created and checked out while developing specific features in the application, helping to better categorise major additions being made.
 
 ### Data Structures
-The application used 2 major data structures in JSON format for storing user and group information. Firstly, the user data structure stores all personal and group related information about each user in the system. To begin, the username, email, and password (all strings) are stored, each required for authenticating the user. In addition, it stores the status of the user (string), which defines their permissions on the site (e.g. SuperAdmin, GroupAdmin, GroupAssis or Regular). Furthermore, an array of groups the user belongs to are stored; this includes the group name (string) and channels of said group (array of strings) they are part of. Overall, this allows the system to keep track of all users and their roles in the system. Next, the group data structure stores a record of all groups and nested channels in the system. Similar to the ‘groups’ of the users data structure, groups also store the group name of the group and all channels that exist for the particular group. Overall, this allows the system to keep track of which groups and channels are available.
+The application used 2 major data structures, stored in a mongo database, for storing user and group information.
+
+<b>Users:</b>
+
+username
+email
+pwd
+status
+groups[]
+  | _ _ _ groupName
+  | _ _ _ channels[]
+
+
+<b>Groups:</b>
+
+groupName
+channels[]
+
 
 ### Angular Architecture
 The Angular frontend of the project utilizes architecture such as components, models and routes. Firstly, the application has 5 different components. This includes a ‘createuser’ component, responsible for creating new users, displaying a table of all users in the system and changing the status (permissions) of users. The ‘createuser’ component is only visible to users with SuperAdmin or GroupAdmin status. In addition, the ‘dashboard’ component is responsible for allowing a user to join different groups and channels, as well as providing authorised users to invite/remove users from groups/channels and creating/deleting groups/channels. Because some key functions seemed to crossover between the ‘dashboard’ and ‘createuser’ components, the attempt at creating service was made but never fully implemented. Furthermore, a ‘login’ component is responsible for authenticating users and storing their information into session memory. When a user has logged in, they are then able to logout, clearing session memory. From this, a ‘pagenotfound’ component is also used to display a 404-error message to the user if the path they are trying to access is unrecognised. And lastly, a ‘home’ page component is used as a template for a not yet implemented home screen to the application. In addition, routes have been implemented into the application to allow the navigation between components. This is chiefly handled in the navigation bar of the application. Here, when a path is called, the route will display a user with its specific component. Nevertheless, when a wildcard path is entered, a user will be redirected to the before mentioned 404-error pagenotfound component. Lastly, the application utilises a set of modules. This includes the AppRoutingModule for routing, NgModule for dynamic interactions between the typescript and html, HttpClientModule for communication with the server, and the bootstrap module for styling.
