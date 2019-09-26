@@ -35,23 +35,22 @@ The application used 2 major data structures, stored in a mongo database:
 
 ### Angular Architecture
 
-#### CreateUser Component
-- Contains relevent functions for admins to see a list of all users, change their permissions, and create new users to the systems, and uploading user profile images.
 
-#### Dashboard Component
-- Contains relevent functions for managing the groups/channels, and for joining a channel to chat within.
+#### Components
 
-#### Home Component
-- A blank home page to be used in the future as a generic website home page.
+CreateUser: Contains relevent functions for admins to see a list of all users, change their permissions, and create new users to the systems, and uploading user profile images.
 
-#### Login Component
-- Contains relevent functions for user login.
+Dashboard: Contains relevent functions for managing the groups/channels, and for joining a channel to chat within.
 
-#### PageNotFound Component
-- Used for displaying a 404 error message if an invalid url is loaded on the page.
+Home: A blank home page to be used in the future as a generic website home page.
 
-#### Socket Service
-- Contains socket related functions.
+Login: Contains relevent functions for user login.
+
+PageNotFound: Used for displaying a 404 error message if an invalid url is loaded on the page.
+
+#### Services
+
+Socket: Contains socket related functions.
 
 ### Node Server Architecture
 The Node server backend of the project uses files and modules to provide services to the frontend. The node server backend is made up of a directory of routes for storing the API calls, a groups and users, a listen file to listen on port 3000, and a main server.js file to start the server and link its files together. In addition, the modules used by the node server include: express for simplified routing, CORS allowing connection to the angular frontend, and an export listen module for opening the server on port 3000.
