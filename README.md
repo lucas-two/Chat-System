@@ -15,23 +15,23 @@ The application used 2 major data structures, stored in a mongo database, for st
 
 <b>Users:</b>
 ```mermaid
-    users
-      ---> username
-      ---> email
-      ---> pwd
-      ---> status
-      ---> groups
-            ---> groupName
-            ---> channels
-
+    users:[]
+      |---> username: string
+      |---> email: string
+      |---> pwd: string
+      |---> status: string
+      |---> groups:[]
+              |---> groupName: string
+              |---> channels[]
 ```
 
 
 <b>Groups:</b>
-
-groupName
-channels[]
-
+```mermaid
+    groups:[]
+      |---> groupName: string
+      |---> channels[]
+```
 
 ### Angular Architecture
 The Angular frontend of the project utilizes architecture such as components, models and routes. Firstly, the application has 5 different components. This includes a ‘createuser’ component, responsible for creating new users, displaying a table of all users in the system and changing the status (permissions) of users. The ‘createuser’ component is only visible to users with SuperAdmin or GroupAdmin status. In addition, the ‘dashboard’ component is responsible for allowing a user to join different groups and channels, as well as providing authorised users to invite/remove users from groups/channels and creating/deleting groups/channels. Because some key functions seemed to crossover between the ‘dashboard’ and ‘createuser’ components, the attempt at creating service was made but never fully implemented. Furthermore, a ‘login’ component is responsible for authenticating users and storing their information into session memory. When a user has logged in, they are then able to logout, clearing session memory. From this, a ‘pagenotfound’ component is also used to display a 404-error message to the user if the path they are trying to access is unrecognised. And lastly, a ‘home’ page component is used as a template for a not yet implemented home screen to the application. In addition, routes have been implemented into the application to allow the navigation between components. This is chiefly handled in the navigation bar of the application. Here, when a path is called, the route will display a user with its specific component. Nevertheless, when a wildcard path is entered, a user will be redirected to the before mentioned 404-error pagenotfound component. Lastly, the application utilises a set of modules. This includes the AppRoutingModule for routing, NgModule for dynamic interactions between the typescript and html, HttpClientModule for communication with the server, and the bootstrap module for styling.
