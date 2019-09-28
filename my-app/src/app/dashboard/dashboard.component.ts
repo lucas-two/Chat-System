@@ -206,6 +206,16 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  // Checking if user is Regular
+  isRegular() {
+    // Check session storage of current user's 'status'
+    if (sessionStorage.getItem('statusUser') === 'Regular') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   // Starting connection
   private initToConnection() {
     this.socketService.initSocket();

@@ -1,3 +1,19 @@
 button {
   margin-right: 5px;
 }
+
+.SuperAdmin {
+  color: maroon;
+}
+
+.GroupAdmin {
+  color: orangered;
+}
+
+.GroupAssis {
+  color: teal;
+}
+
+.Regular {
+  color: black;
+}
