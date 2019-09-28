@@ -7,21 +7,36 @@ const formidable = require('formidable');
 const path = require('path');
 const MongoClient = require('mongodb').MongoClient;
 var  ObjectID = require('mongodb').ObjectID;
+const io = require('socket.io')(http);
+const sockets = require('./sockets.js');
 
 app.use(cors());
-app.use(bodyParser.urlencoded({extended: true})); // old
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+// URL of mongodb
 const url = 'mongodb://localhost:27017';
 
+// Connect to the mongoDB
 MongoClient.connect(url, {poolSize:10,useNewUrlParser: true,useUnifiedTopology: true},function(err, client) {
+
+    // Error handling
     if (err) {
-        return console.log(err)
+        return console.log(err);
     }
+
+    // Declaring Database
     const dbName = 'chat';
     const db = client.db(dbName);
 
+    // Setting up socket
+    const PORT = 3000;
+    sockets.connect(io, PORT);
+
+    // Importing Listen
     require('./listen.js')(http);
+
+    // Importing APIs
     require('./routes/api-login.js')(db,app);
     require('./routes/api-add-user.js')(db,app);
     require('./routes/api-get-users.js')(db,app);

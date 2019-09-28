@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { UserService } from './services/user.service';
 import { CreateuserComponent } from './createuser/createuser.component';
+import { SocketService } from './services/socket.service';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CreateuserComponent } from './createuser/createuser.component';
     HttpClientModule
   ],
   providers: [
-    UserService
+    UserService,
+    SocketService
   ],
   bootstrap: [AppComponent]
 })

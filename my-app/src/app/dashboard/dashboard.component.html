@@ -157,17 +157,24 @@
 
   <div *ngIf="hasSlectedGroup()">
   <ng-template [ngIf]="hasSlectedChannel()" [ngIfElse]="notSelectedChannel">
-      <!-- Chat History -->
-      <div class="form-group">
-          <h5>Chat History</h5>
-          <textarea class="form-control" rows="5" disabled></textarea>
-        </div>
         <!-- User message input -->
         <div class="pull-left">
-            <div class="input-group">
-              <input type="text" class="form-control" [(ngModel)]="userText" (keydown.enter)="sendMessage()">
-              <button type="submit" class="btn btn-primary btn-small" (click)="sendMessage()">Send</button>
+          <div class="input-group">
+            <input type="text" class="form-control" [(ngModel)]="messageContent"  (keydown.enter)="sendMessage()" placeholder="Enter message">
+            <button type="submit" class="btn btn-primary btn-small" (click)="sendMessage()">Send</button>
+          </div>
+        </div>
+        <br>
+        <!-- Message history -->
+        <div *ngFor="let message of messageLog">
+          <div class="card">
+            <div class="card bg-light">
+              <div class="card-body">
+                <b>Anonymous:</b> {{ message }}
+              </div>
             </div>
+          </div>
+          <br>
         </div>
         <br>
         <!-- Exiting the channel -->

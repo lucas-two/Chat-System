@@ -9,8 +9,6 @@ module.exports = (db,formidable,app) => {
 
     const collection = db.collection('users');
 
-
-
     var form = new formidable.IncomingForm({ uploadDir: './userimages'});
     form.keepExtensions = true;
 

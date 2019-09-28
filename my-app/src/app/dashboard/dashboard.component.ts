@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { SocketService } from '../services/socket.service';
+
 const BACKEND_URL = 'http://localhost:3000';
 
 @Component({
@@ -36,9 +38,12 @@ export class DashboardComponent implements OnInit {
   groupOfInputChannel: string;
   inputChannelName: string;
 
-  userText: string; // Stores what user writes in textbox
+  // Variables for messages
+  messageContent: string; // What user writes in textbox
+  messageLog: string[] = []; // Record of all messages
+  ioConnection: any;
 
-  constructor(private router: Router, private httpClient: HttpClient) {}
+  constructor(private router: Router, private httpClient: HttpClient, private socketService: SocketService) {}
   ngOnInit() {
     this.getAllUsers();
     this.getAllGroups();
@@ -52,6 +57,8 @@ export class DashboardComponent implements OnInit {
     this.inputGroupName = '';
     this.groupOfInputChannel = '';
     this.inputChannelName = '';
+
+    this.initToConnection();
   }
 
   // Getting all users in the system
@@ -199,11 +206,35 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  // Starting connection
+  private initToConnection() {
+    this.socketService.initSocket();
+    this.ioConnection = this.socketService.onMessage()
+      .subscribe((message: string) => {
+        this.messageLog.push(message);
+      });
+  }
+
+  // Sending messages
+  private sendMessage() {
+    console.log('Clicked!');
+    if (this.messageContent) {
+      console.log('Added message');
+      console.log(this.messageLog);
+      this.socketService.send(this.messageContent);
+      this.messageContent = null;
+    } else {
+      console.log('Failure');
+    }
+  }
+
+
+
   // - Not yet implemented -
   // Function for sending messages
-  sendMessage() {
-    this.userText = ''; // Clear textbox
-  }
+  // sendMessage() {
+  //   this.userText = ''; // Clear textbox
+  // }
 
   // - Not yet implemented -
   // Function for exiting channel
