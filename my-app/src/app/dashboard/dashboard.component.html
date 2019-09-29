@@ -1,10 +1,3 @@
-<h1>Messages</h1>
-<div *ngFor="let item of messageLog">
-  {{item.message}}
-</div>
-
-
-
 <h1>Dashboard</h1>
 <h5>Welcome, {{usernameUser}} ({{ statusUser }})!</h5>
 <br>
@@ -175,11 +168,11 @@
         </div>
         <br>
         <!-- Message history -->
-        <div *ngFor="let message of messageLog">
+        <div *ngFor="let item of messageLog">
           <div class="card">
             <div class="card bg-light">
               <div class="card-body">
-                <b>{{message.user}} :</b> {{ message.message }}
+                <b>{{item.user}} :</b> {{item.msg}}
               </div>
             </div>
           </div>

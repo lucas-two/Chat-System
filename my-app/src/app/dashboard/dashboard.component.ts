@@ -41,23 +41,25 @@ export class DashboardComponent implements OnInit {
   // Variables for messages
   messageContent: string; // What user writes in textbox
   // messageLog: string[] = []; // Record of all messages
-  messageLog: Array<{user: string, message: string}> = [];
+  messageLog: Array<{user: string, msg: string}> = [];
   ioConnection: any;
+
+  msgObj = {}; // for sending username + message through sockets
 
   constructor(private router: Router, private httpClient: HttpClient, private socketService: SocketService) {
 
-    this.socketService.newUserJoin()
-      .subscribe(data => {
-        console.log(data);
-        this.messageLog.push(data);
-      });
+    // this.socketService.newUserJoin()
+    //   .subscribe(data => {
+    //     console.log(data);
+    //     this.messageLog.push(data);
+    //   });
 
 
-    this.socketService.userLeftRoom()
-      .subscribe(data => {
-        console.log(data);
-        this.messageLog.push(data);
-      });
+    // this.socketService.userLeftRoom()
+    //   .subscribe(data => {
+    //     console.log(data);
+    //     this.messageLog.push(data);
+    //   });
   }
 
   ngOnInit() {
@@ -74,8 +76,7 @@ export class DashboardComponent implements OnInit {
     this.groupOfInputChannel = '';
     this.inputChannelName = '';
 
-    // this.initToConnection();
-    this.socketService.initSocket();
+    this.initToConnection();
   }
 
   // Getting all users in the system
@@ -234,40 +235,45 @@ export class DashboardComponent implements OnInit {
   }
 
   // Starting connection
-  // private initToConnection() {
-  //   this.socketService.initSocket();
-  //   this.ioConnection = this.socketService.onMessage()
-  //     .subscribe((message: string) => {
-  //       this.messageLog.push(message);
-  //     });
-  // }
+  private initToConnection() {
+    this.socketService.initSocket();
+    this.ioConnection = this.socketService.onMessage()
+      .subscribe((data) => {
+        this.messageLog.push(data);
+      });
+  }
 
   // Sending messages
-  // private sendMessage() {
-  //   console.log('Clicked!');
-  //   if (this.messageContent) {
-  //     console.log('Added message');
-  //     console.log(this.messageLog);
-  //     this.socketService.send(this.messageContent);
-  //     this.messageContent = null;
-  //   } else {
-  //     console.log('Failure');
-  //   }
-  // }
+  private sendMessage() {
+    console.log('Clicked!');
+
+    if (this.messageContent) {
+
+      console.log('Added message');
+      console.log(this.messageLog);
+
+      this.msgObj = {user: this.usernameUser, msg: this.messageContent};
+      console.log(this.msgObj);
+      this.socketService.send(this.msgObj);
+
+      this.messageContent = null;
+
+    } else {
+      console.log('Failure');
+
+    }
+  }
 
   // Joining a room
   join() {
-    console.log('Minecraft!');
-    this.socketService.joinRoom({user: this.usernameUser, room: this.selectedChannel});
+    console.log('joining!');
+    // this.socketService.joinRoom({user: this.usernameUser, room: this.selectedChannel});
   }
 
   leave() {
-    this.socketService.leaveRoom({user: this.usernameUser, room: this.selectedChannel});
+    // this.socketService.leaveRoom({user: this.usernameUser, room: this.selectedChannel});
     this.selectedChannel = ''; // Deselect channel
 
   }
 
-  displayMessage(msg) {
-    alert(msg);
-  }
 }
