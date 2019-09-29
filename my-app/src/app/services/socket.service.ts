@@ -17,6 +17,7 @@ export class SocketService {
     this.socket = io(BACKEND_URL);
   }
 
+  // Sending messages
   public send(data): void {
     this.socket.emit('message', data);
   }

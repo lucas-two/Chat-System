@@ -45,22 +45,9 @@ export class DashboardComponent implements OnInit {
   ioConnection: any;
 
   msgObj = {}; // for sending username + message through sockets
+  roomObj = {}; // for sending username + room (group & channel)
 
-  constructor(private router: Router, private httpClient: HttpClient, private socketService: SocketService) {
-
-    // this.socketService.newUserJoin()
-    //   .subscribe(data => {
-    //     console.log(data);
-    //     this.messageLog.push(data);
-    //   });
-
-
-    // this.socketService.userLeftRoom()
-    //   .subscribe(data => {
-    //     console.log(data);
-    //     this.messageLog.push(data);
-    //   });
-  }
+  constructor(private router: Router, private httpClient: HttpClient, private socketService: SocketService) {}
 
   ngOnInit() {
     this.getAllUsers();
@@ -76,7 +63,7 @@ export class DashboardComponent implements OnInit {
     this.groupOfInputChannel = '';
     this.inputChannelName = '';
 
-    this.initToConnection();
+    this.initToConnection(); // Start socket connection
   }
 
   // Getting all users in the system
@@ -245,35 +232,30 @@ export class DashboardComponent implements OnInit {
 
   // Sending messages
   private sendMessage() {
-    console.log('Clicked!');
-
+    // If a message was entered
     if (this.messageContent) {
-
-      console.log('Added message');
-      console.log(this.messageLog);
-
       this.msgObj = {user: this.usernameUser, msg: this.messageContent};
-      console.log(this.msgObj);
-      this.socketService.send(this.msgObj);
+      this.socketService.send(this.msgObj); // Send message to socket
+      this.messageContent = null; // Empty the text field
 
-      this.messageContent = null;
-
+    // If message not entered
     } else {
-      console.log('Failure');
-
+      console.log('No message entered');
     }
   }
 
   // Joining a room
-  join() {
+  private join() {
     console.log('joining!');
-    // this.socketService.joinRoom({user: this.usernameUser, room: this.selectedChannel});
+    this.roomObj = {user: this.usernameUser, msg: 'joined the room'};
+    this.socketService.send(this.roomObj);
   }
 
-  leave() {
-    // this.socketService.leaveRoom({user: this.usernameUser, room: this.selectedChannel});
+  // Leaving a room
+  private leave() {
+    console.log('joining!');
+    this.roomObj = {user: this.usernameUser, msg: 'left the room'};
+    this.socketService.send(this.roomObj);
     this.selectedChannel = ''; // Deselect channel
-
   }
-
 }
