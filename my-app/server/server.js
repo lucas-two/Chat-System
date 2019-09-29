@@ -8,7 +8,7 @@ const path = require('path');
 const MongoClient = require('mongodb').MongoClient;
 var  ObjectID = require('mongodb').ObjectID;
 const io = require('socket.io')(http);
-const sockets = require('./sockets.js');
+
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -30,6 +30,7 @@ MongoClient.connect(url, {poolSize:10,useNewUrlParser: true,useUnifiedTopology: 
     const db = client.db(dbName);
 
     // Setting up socket
+    const sockets = require('./sockets.js');
     const PORT = 3000;
     sockets.connect(io, PORT);
 

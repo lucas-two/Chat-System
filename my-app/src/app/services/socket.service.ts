@@ -23,7 +23,7 @@ export class SocketService {
 
   newUserJoin() {
     const observable = new Observable<{user: string, message: string}>(observer => {
-      this.socket.on('new uwser joined', (data) => {
+      this.socket.on('new user joined', (data) => {
         observer.next(data);
       });
       // If error, disconnect the socket.
@@ -32,14 +32,30 @@ export class SocketService {
     return observable;
   }
 
-  public send(message: string): void {
-    this.socket.emit('message', message);
+  leaveRoom(data) {
+    this.socket.emit('leave', data);
   }
 
-  public onMessage(): Observable<any> {
-    const observable = new Observable(observer => {
-      this.socket.on('message', (data: string) => observer.next(data));
+  userLeftRoom() {
+    const observable = new Observable<{user: string, message: string}>(observer => {
+      this.socket.on('left room', (data) => {
+        observer.next(data);
+      });
+
+      // If error, disconnect the socket.
+      return () => { this.socket.disconnect(); };
     });
     return observable;
   }
+
+  // public send(message: string): void {
+  //   this.socket.emit('message', message);
+  // }
+
+  // public onMessage(): Observable<any> {
+  //   const observable = new Observable(observer => {
+  //     this.socket.on('message', (data: string) => observer.next(data));
+  //   });
+  //   return observable;
+  // }
 }

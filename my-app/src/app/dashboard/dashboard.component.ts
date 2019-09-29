@@ -41,13 +41,23 @@ export class DashboardComponent implements OnInit {
   // Variables for messages
   messageContent: string; // What user writes in textbox
   // messageLog: string[] = []; // Record of all messages
-  messageLog: Array<{user: string, message: string}>;
+  messageLog: Array<{user: string, message: string}> = [];
   ioConnection: any;
 
   constructor(private router: Router, private httpClient: HttpClient, private socketService: SocketService) {
 
     this.socketService.newUserJoin()
-      .subscribe(data => this.messageLog.push(data));
+      .subscribe(data => {
+        console.log(data);
+        this.messageLog.push(data);
+      });
+
+
+    this.socketService.userLeftRoom()
+      .subscribe(data => {
+        console.log(data);
+        this.messageLog.push(data);
+      });
   }
 
   ngOnInit() {
@@ -64,7 +74,8 @@ export class DashboardComponent implements OnInit {
     this.groupOfInputChannel = '';
     this.inputChannelName = '';
 
-    this.initToConnection();
+    // this.initToConnection();
+    this.socketService.initSocket();
   }
 
   // Getting all users in the system
@@ -223,37 +234,37 @@ export class DashboardComponent implements OnInit {
   }
 
   // Starting connection
-  private initToConnection() {
-    this.socketService.initSocket();
-    this.ioConnection = this.socketService.onMessage()
-      .subscribe((message: string) => {
-        this.messageLog.push(message);
-      });
-  }
+  // private initToConnection() {
+  //   this.socketService.initSocket();
+  //   this.ioConnection = this.socketService.onMessage()
+  //     .subscribe((message: string) => {
+  //       this.messageLog.push(message);
+  //     });
+  // }
 
   // Sending messages
-  private sendMessage() {
-    console.log('Clicked!');
-    if (this.messageContent) {
-      console.log('Added message');
-      console.log(this.messageLog);
-      this.socketService.send(this.messageContent);
-      this.messageContent = null;
-    } else {
-      console.log('Failure');
-    }
-  }
+  // private sendMessage() {
+  //   console.log('Clicked!');
+  //   if (this.messageContent) {
+  //     console.log('Added message');
+  //     console.log(this.messageLog);
+  //     this.socketService.send(this.messageContent);
+  //     this.messageContent = null;
+  //   } else {
+  //     console.log('Failure');
+  //   }
+  // }
 
   // Joining a room
   join() {
-    console.log("Minecraft!");
+    console.log('Minecraft!');
     this.socketService.joinRoom({user: this.usernameUser, room: this.selectedChannel});
   }
 
-  // - Not yet implemented -
-  // Function for exiting channel
-  exitChannel() {
+  leave() {
+    this.socketService.leaveRoom({user: this.usernameUser, room: this.selectedChannel});
     this.selectedChannel = ''; // Deselect channel
+
   }
 
   displayMessage(msg) {
