@@ -140,7 +140,7 @@
       <div *ngFor= "let group of groupsUser">
           <!-- Get the channels of the selected group -->
           <div *ngIf="group.groupName == selectedGroup">
-              <select class="form-control" [(ngModel)]="selectedChannel">
+              <select class="form-control" [(ngModel)]="selectedChannel" (change)="join()">
                   <option value="" selected disabled hidden>Select Channel</option>
                   <option *ngFor="let channel of group.channels">{{ channel }}</option>
               </select>
@@ -171,17 +171,8 @@
         <div *ngFor="let message of messageLog">
           <div class="card">
             <div class="card bg-light">
-              <div class="card-body" *ngIf="isSuperAdmin()">
-                <b class="SuperAdmin">{{usernameUser}}:</b> {{ message }}
-              </div>
-              <div class="card-body" *ngIf="isGroupAdmin()">
-                <b class="GroupAdmin">{{usernameUser}}:</b> {{ message }}
-              </div>
-              <div class="card-body" *ngIf="isGroupAssis()">
-                <b class="GroupAssis">{{usernameUser}}:</b> {{ message }}
-              </div>
-              <div class="card-body" *ngIf="isRegular()">
-                <b class="Regular">{{usernameUser}}:</b> {{ message }}
+              <div class="card-body">
+                <b>{{message.user}} :</b> {{ message.message }}
               </div>
             </div>
           </div>

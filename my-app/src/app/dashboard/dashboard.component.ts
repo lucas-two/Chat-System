@@ -40,10 +40,16 @@ export class DashboardComponent implements OnInit {
 
   // Variables for messages
   messageContent: string; // What user writes in textbox
-  messageLog: string[] = []; // Record of all messages
+  // messageLog: string[] = []; // Record of all messages
+  messageLog: Array<{user: string, message: string}>;
   ioConnection: any;
 
-  constructor(private router: Router, private httpClient: HttpClient, private socketService: SocketService) {}
+  constructor(private router: Router, private httpClient: HttpClient, private socketService: SocketService) {
+
+    this.socketService.newUserJoin()
+      .subscribe(data => this.messageLog.push(data));
+  }
+
   ngOnInit() {
     this.getAllUsers();
     this.getAllGroups();
@@ -238,13 +244,11 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-
-
-  // - Not yet implemented -
-  // Function for sending messages
-  // sendMessage() {
-  //   this.userText = ''; // Clear textbox
-  // }
+  // Joining a room
+  join() {
+    console.log("Minecraft!");
+    this.socketService.joinRoom({user: this.usernameUser, room: this.selectedChannel});
+  }
 
   // - Not yet implemented -
   // Function for exiting channel
