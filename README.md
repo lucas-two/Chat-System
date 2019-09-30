@@ -3,6 +3,11 @@
 
 ## Documentation
 
+### Running Tests
+Run e2e tests : `ng e2e`
+Unit tests: `npm run-script unit`
+Integration tests: `npm run-script integration`
+
 ### Git
 #### Organisation
 The organisation of the repository aims to be clear and easy to navigate. It stores a folder called ‘my-app’ which contains all source files related to the Angular project. In addition, relevant node package manager module (NPM) files are stored, allowing the user to quickly understand NPM dependencies. Lastly, a README file is provided to give brief documentation about the project. When the repository is cloned, it can run by entering `ng serve` within the ‘my-app’ directory and `node server.js` within the ‘my-app/server’ directory.
