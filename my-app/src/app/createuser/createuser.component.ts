@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 const BACKEND_URL = 'http://localhost:3000';
 
 @Component({
@@ -139,6 +140,7 @@ export class CreateuserComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
 
+  // Image upload
   onUpload() {
     const fd = new FormData();
     fd.append('image', this.selectedFile, this.selectedFile.name);
@@ -149,6 +151,4 @@ export class CreateuserComponent implements OnInit {
         console.log(data.filename + ' ' + data.size);
       });
   }
-
-
 }

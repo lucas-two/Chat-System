@@ -9,10 +9,12 @@ const MongoClient = require('mongodb').MongoClient;
 var  ObjectID = require('mongodb').ObjectID;
 const io = require('socket.io')(http);
 
-
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+app.use(express.static(path.join(__dirname, '../dist/imageupload')));
+app.use('/images', express.static(path.join(__dirname, './userimages')));
 
 // URL of mongodb
 const url = 'mongodb://localhost:27017';

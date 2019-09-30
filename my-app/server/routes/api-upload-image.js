@@ -24,6 +24,7 @@ module.exports = (db,formidable,app) => {
     });
 
     // Upload to db
+    // Currently doesn't upload to db
     form.on('file', (field, file) => {
       collection.updateOne({"username": "Alice"}, {$set: {"picture": file}}).then(() => {
         res.send({'filename': file.name, 'size': file.size});
