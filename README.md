@@ -80,7 +80,7 @@ To divide responsibilities between client and server REST API was used. Firstly,
 | 12 | Api-remove-from-channel | Remove user from channel | Username, Group name, Channel name | N/A |
 | 13 | Api-remove-from-group | Remove user from group | Username, Group name | N/A |
 | 14 | Api-update-status | Update user permissions/status | Username, New status | N/A |
-| 15 | Api-upload-image | Uploading an image | image file | N/A |
+| 15 | Api-upload-image | Uploading an image | image file | image url |
 
 ### State Change
 The server side JSON files are updated through API requests made by the client. In this process, the JSON data is parsed into an object in which it can be changed, and is then parsed back into JSON and rewrites the existing JSON file. The components of the angular front-end components are chiefly handled through the NgModule. For example, when a user attempts to login but does not enter the correct information, a flag will check if data was received from the server and if not, will use ngIf to display a login error to the user. Furthermore, because only certain users are able to see certain components (such as the create user component), user permissions are checked and will use ngIf to only display content if it is available to that status. Lastly, it was attempted to dynamically display the most current data to the user on the component (such as groups and users in system) through the get-users API which is called whenever a data changing function is made. This however seemed to not work so well in the group and channels creation section of the dashboard component, but successfully worked in displaying user information in the createuser component.
