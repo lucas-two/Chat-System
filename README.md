@@ -4,9 +4,9 @@
 ## Documentation
 
 ### Running Tests
-Run e2e tests : `ng e2e`
-Unit tests: `npm run-script unit`
-Integration tests: `npm run-script integration`
+- Run e2e tests : `ng e2e`
+- Unit tests: `npm run-script unit`
+- Integration tests: `npm run-script integration`
 
 ### Git
 #### Organisation
