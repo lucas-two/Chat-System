@@ -1,8 +1,10 @@
-module.exports = (db, app) => {
+module.exports = (MongoClient,url,dbName,app) => {
   app.post('/addToChannel',function(req,res){
 
     // Debugging
     console.log('api-add-to-channel hit angular');
+
+    // Error handling
     if (!req.body) {
       return res.sendStatus(400);
     }
@@ -10,25 +12,34 @@ module.exports = (db, app) => {
     let userGroupObj = req.body; // username & groupname & new channel name
     let existing = true; // Flag for if user is already in the group
 
-    const collection = db.collection('users');
+    MongoClient.connect(url, {poolSize:10,useNewUrlParser: true,useUnifiedTopology: true}, (err, client) => {
 
-    // See if already in the channel
-    collection.find({"username": userGroupObj.user, "groups.groupName" : userGroupObj.group, "groups.channels" : userGroupObj.channel }).count((err,count) => {
+      // Error handling
+      if (err) {
+        return console.log(err);
+      }
 
-      // If not in the channel already
-      if (count == 0) {
-        // Add to channel
-        collection.updateOne({"username": userGroupObj.user, "groups.groupName" : userGroupObj.group}, {$push: {"groups.$.channels": userGroupObj.channel}}).then(() => {
-          existing = false;
+      const db = client.db(dbName); // Define database
+      const collection = db.collection('users'); // Use the USERS collection
+
+      // See if already in the channel
+      collection.find({"username": userGroupObj.user, "groups.groupName" : userGroupObj.group, "groups.channels" : userGroupObj.channel }).count((err,count) => {
+
+        // If not in the channel already
+        if (count == 0) {
+          // Add to channel
+          collection.updateOne({"username": userGroupObj.user, "groups.groupName" : userGroupObj.group}, {$push: {"groups.$.channels": userGroupObj.channel}}).then(() => {
+            existing = false;
+            res.send(existing);
+          });
+        }
+
+        // If already in group
+        else {
+          console.log("nay");
           res.send(existing);
-        });
-      }
-
-      // If already in group
-      else {
-        console.log("nay");
-        res.send(existing);
-      }
+        }
+      });
     });
   });
 }

@@ -1,36 +1,50 @@
-module.exports = (db,formidable,app) => {
+module.exports = (MongoClient,url,dbName,app,formidable) => {
   app.post('/imageUpload',function(req,res){
 
     // Debugging
     console.log('api-image-upload hit angular');
+
+    // Error handling
     if (!req.body) {
       return res.sendStatus(400);
     }
 
-    const collection = db.collection('users');
+    MongoClient.connect(url, {poolSize:10,useNewUrlParser: true,useUnifiedTopology: true}, (err, client) => {
 
-    var form = new formidable.IncomingForm({ uploadDir: './userimages'});
-    form.keepExtensions = true;
+      // Error handling
+      if (err) {
+        return console.log(err);
+      }
 
-    // Error handling
-    form.on('error', () => {
-      throw err;
-      res.send({'bad': 1});
-    });
+      const db = client.db(dbName); // Define database
+      const collection = db.collection('users'); // Use the USERS collection
 
-    // Keep name
-    form.on('fileBegin', (name, file) => {
-      file.path = form.uploadDir + "/" + file.name;
-    });
+      var form = new formidable.IncomingForm({ uploadDir: './userimages'});
+      form.keepExtensions = true;
 
-    // Upload to db
-    // Currently doesn't upload to db
-    form.on('file', (field, file) => {
-      collection.updateOne({"username": "Alice"}, {$set: {"picture": file}}).then(() => {
-        res.send({'filename': file.name, 'size': file.size});
+      // Error handling
+      form.on('error', () => {
+        throw err;
+        res.send({'bad': 1});
       });
-    });
 
-    form.parse(req);
+      // Keep name
+      form.on('fileBegin', (name, file) => {
+        file.path = form.uploadDir + "/" + file.name;
+      });
+
+      // Upload to db
+      // NOT YET FULLY WORKING -----------------------
+      // -----  Currently doesn't upload to db properly
+      // ----- is set to 'Alice' for debugging purposes
+      // ----------------------------------------------
+      form.on('file', (field, file) => {
+        collection.updateOne({"username": "Alice"}, {$set: {"picture": file}}).then(() => {
+          res.send({'filename': file.name, 'size': file.size});
+        });
+      });
+
+      form.parse(req);
+    });
   });
 }

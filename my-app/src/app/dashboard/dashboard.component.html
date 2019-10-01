@@ -164,6 +164,7 @@
           <div class="input-group">
             <input type="text" class="form-control" [(ngModel)]="messageContent"  (keydown.enter)="sendMessage()" placeholder="Enter message">
             <button type="submit" class="btn btn-primary btn-small" (click)="sendMessage()">Send</button>
+            <button type="submit" class="btn btn-primary btn-small">+</button>
           </div>
         </div>
         <br>
@@ -172,8 +173,8 @@
           <div class="card">
             <div class="card bg-light">
               <div class="card-body">
-                <img src="https://lumiere-a.akamaihd.net/v1/images/ct_videoportal_pixar_mikewazoski_ddt-16832_a98c6c65.jpeg" width="40" height="40" alt="profile pic">
-                <b>{{item.user}} :</b> {{item.msg}}
+                <img src="https://www.pinclipart.com/picdir/middle/157-1578186_user-profile-default-image-png-clipart.png" width="50" height="50" alt="profile pic">
+                <b> {{item.user}} :</b> {{item.msg}}
               </div>
             </div>
           </div>

@@ -1,8 +1,10 @@
-module.exports = (db, app) => {
+module.exports = (MongoClient,url,dbName,app) => {
   app.post('/updateStatus',function(req,res){
 
     // Debugging
     console.log('api-update-status hit angular');
+
+    // Error handling
     if (!req.body) {
       return res.sendStatus(400);
     }
@@ -10,11 +12,20 @@ module.exports = (db, app) => {
     // Store user object (name & status)
     let userObj = req.body;
 
-    const collection = db.collection('users');
+    MongoClient.connect(url, {poolSize:10,useNewUrlParser: true,useUnifiedTopology: true}, (err, client) => {
 
-    // Update the status of user
-    collection.updateOne({username: userObj.username}, {$set: {status: userObj.status}}, () => {
-      res.send({'ok': 1});
+      // Error handling
+      if (err) {
+        return console.log(err);
+      }
+
+      const db = client.db(dbName); // Define database
+      const collection = db.collection('users'); // Use the USERS database
+
+      // Update the status of user
+      collection.updateOne({username: userObj.username}, {$set: {status: userObj.status}}, () => {
+        res.send({'ok': 1});
+      });
     });
   });
 }

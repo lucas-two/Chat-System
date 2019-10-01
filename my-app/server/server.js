@@ -6,53 +6,44 @@ const http = require('http').Server(app);
 const formidable = require('formidable');
 const path = require('path');
 const MongoClient = require('mongodb').MongoClient;
-var  ObjectID = require('mongodb').ObjectID;
 const io = require('socket.io')(http);
 
+// Middleware
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+// Setting up path for image storage
 app.use(express.static(path.join(__dirname, '../dist/imageupload')));
 app.use('/images', express.static(path.join(__dirname, './userimages')));
 
 // URL of mongodb
 const url = 'mongodb://localhost:27017';
 
-// Connect to the mongoDB
-MongoClient.connect(url, {poolSize:10,useNewUrlParser: true,useUnifiedTopology: true},function(err, client) {
+// Defining name of database
+const dbName = 'chat';
 
-    // Error handling
-    if (err) {
-        return console.log(err);
-    }
+// Setting up socket
+const sockets = require('./sockets.js');
+const PORT = 3000;
+sockets.connect(io, PORT);
 
-    // Declaring Database
-    const dbName = 'chat';
-    const db = client.db(dbName);
+// Importing Listen
+require('./listen.js')(http);
 
-    // Setting up socket
-    const sockets = require('./sockets.js');
-    const PORT = 3000;
-    sockets.connect(io, PORT);
-
-    // Importing Listen
-    require('./listen.js')(http);
-
-    // Importing APIs
-    require('./routes/api-login.js')(db,app);
-    require('./routes/api-add-user.js')(db,app);
-    require('./routes/api-get-users.js')(db,app);
-    require('./routes/api-get-groups.js')(db,app);
-    require('./routes/api-add-group.js')(db,app);
-    require('./routes/api-add-channel.js')(db,app);
-    require('./routes/api-update-status.js')(db,app);
-    require('./routes/api-delete-user.js')(db,app);
-    require('./routes/api-add-to-group.js')(db,app);
-    require('./routes/api-add-to-channel.js')(db,app);
-    require('./routes/api-remove-from-group.js')(db,app);
-    require('./routes/api-remove-from-channel.js')(db,app);
-    require('./routes/api-delete-group.js')(db,app);
-    require('./routes/api-delete-channel.js')(db,app);
-    require('./routes/api-upload-image.js')(db,formidable,app);
-});
+// Importing APIs
+require('./routes/api-login.js')(MongoClient,url,dbName,app);
+require('./routes/api-add-user.js')(MongoClient,url,dbName,app);
+require('./routes/api-get-users.js')(MongoClient,url,dbName,app);
+require('./routes/api-get-groups.js')(MongoClient,url,dbName,app);
+require('./routes/api-add-group.js')(MongoClient,url,dbName,app);
+require('./routes/api-add-channel.js')(MongoClient,url,dbName,app);
+require('./routes/api-update-status.js')(MongoClient,url,dbName,app);
+require('./routes/api-delete-user.js')(MongoClient,url,dbName,app);
+require('./routes/api-add-to-group.js')(MongoClient,url,dbName,app);
+require('./routes/api-add-to-channel.js')(MongoClient,url,dbName,app);
+require('./routes/api-remove-from-group.js')(MongoClient,url,dbName,app);
+require('./routes/api-remove-from-channel.js')(MongoClient,url,dbName,app);
+require('./routes/api-delete-group.js')(MongoClient,url,dbName,app);
+require('./routes/api-delete-channel.js')(MongoClient,url,dbName,app);
+require('./routes/api-upload-image.js')(MongoClient,url,dbName,app,formidable);

@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "integration": "mocha ./integration_tests/test.js --timeout 10000",
+    "unit": "mocha ./unit_tests/test.js --timeout 10000",
     "start": "node server.js"
   },
   "author": "",
