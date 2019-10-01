@@ -4,9 +4,22 @@
 ## Documentation
 
 ### Running Tests
-- Run e2e tests : `ng e2e`
+<b> Server Side </b>
+(Navigate to the server directory)
+
 - Unit tests: `npm run-script unit`
 - Integration tests: `npm run-script integration`
+
+<b> Client Side </b>
+(Navigate to the my-app directory)
+
+- Unit tests: `...`
+- Integration tests: `...`
+
+<b> E2E </b>
+(Navigate to the my-app directory)
+
+- E2e tests : `ng e2e`
 
 ### Git
 #### Organisation
