@@ -107,7 +107,7 @@ The application used 2 major data structures stored in a local NoSQL Mongo datab
 
 ### Node Server Architecture
 ```mermaid
-[server] // Server code
+[server]
    |---> [routes]
    |---> server.js
    |---> listen.js
