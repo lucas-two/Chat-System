@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "integration": "mocha ./integration_tests/test.js --timeout 10000",
-    "unit": "mocha ./unit_tests/test.js --timeout 10000",
+    "test": "mocha ./tests/test.js --timeout 10000",
     "start": "node server.js"
   },
   "author": "",
