@@ -18,6 +18,28 @@
 
 ### Git
 #### Organisation
+
+```mermaid
+    [README.md]
+    [my-app]
+       |---> [server] // Server code
+                |---> [routes]
+                |---> server.js
+                |---> listen.js
+                |---> sockets.js
+                |---> [tests]
+                         |---> test.js
+
+       |---> [src] // Angular code
+                |---> [app]
+                        |---> [CreateUser Component]
+                        |---> [Dashboard Component]
+                        |---> [Login Component]
+                        |---> [Home Component]
+                        |---> [PageNotFound Component]
+                        |---> [Services]
+                                  |---> socket.service.js
+```
 The organisation of the repository aims to be clear and easy to navigate. It stores a folder called ‘my-app’ which contains all source files related to the Angular project. In addition, relevant node package manager module (NPM) files are stored, allowing the user to quickly understand NPM dependencies. Lastly, a README file is provided to give brief documentation about the project. When the repository is cloned, it can run by entering `ng serve` within the ‘my-app’ directory and `node server.js` within the ‘my-app/server’ directory.
 
 #### Usage
@@ -48,7 +70,17 @@ The application used 2 major data structures, stored in a mongo database:
 ```
 
 ### Angular Architecture
-
+```mermaid
+[src]
+  |---> [app]
+  |---> [CreateUser Component]
+  |---> [Dashboard Component]
+  |---> [Login Component]
+  |---> [Home Component]
+  |---> [PageNotFound Component]
+  |---> [Services]
+            |---> socket.service.js
+```
 
 #### Components
 
@@ -67,6 +99,16 @@ The application used 2 major data structures, stored in a mongo database:
 - Socket: Contains socket related functions.
 
 ### Node Server Architecture
+```mermaid
+[server] // Server code
+   |---> [routes]
+   |---> server.js
+   |---> listen.js
+   |---> sockets.js
+   |---> [tests]
+           |---> test.js
+```
+
 The Node server backend of the project uses files and modules to provide services to the frontend. The node server backend is made up of a directory of routes for storing the API calls, a groups and users, a listen file to listen on port 3000, and a main server.js file to start the server and link its files together. In addition, the modules used by the node server include: express for simplified routing, CORS allowing connection to the angular frontend, and an export listen module for opening the server on port 3000.
 
 ### REST API
