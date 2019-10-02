@@ -3,23 +3,19 @@
 
 ## Documentation
 
-### Running Tests
+### Testing
 <b> Server Side </b>
 (Navigate to the server directory)
-
-- Unit tests: `npm run-script unit`
-- Integration tests: `npm run-script integration`
+1. Navigate to `my-app/server` directory
+2. In CMD run  `npm run-script test`
 
 <b> Client Side </b>
-(Navigate to the my-app directory)
-
-- Unit tests: `...`
-- Integration tests: `...`
+1. Navigate to `my-app` directory
+2. In CMD run  `....`
 
 <b> E2E </b>
-(Navigate to the my-app directory)
-
-- E2e tests : `ng e2e`
+1. Navigate to `my-app` directory
+2. In CMD run  `ng e2e`
 
 ### Git
 #### Organisation
@@ -38,6 +34,7 @@ The application used 2 major data structures, stored in a mongo database:
       |---> email: string
       |---> pwd: string
       |---> status: string
+      |---> picture: file
       |---> groups:[]
               |---> groupName: string
               |---> channels[]
