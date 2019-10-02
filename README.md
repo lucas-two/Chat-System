@@ -19,7 +19,7 @@
 
 <b> Client Side </b>
 1. Navigate to `my-app` directory
-2. In CMD run  `....`
+2. In CMD run  `ng test`
 
 <b> E2E </b>
 1. Navigate to `my-app` directory
