@@ -34,13 +34,13 @@
     [README.md]
     [my-app]
        |---> [server] // Server code
-                |---> [routes]
-                |---> server.js
-                |---> listen.js
-                |---> sockets.js
-                |---> [tests]
-                         |---> test.js
-
+       |         |---> [routes]
+       |         |---> server.js
+       |         |---> listen.js
+       |         |---> sockets.js
+       |         |---> [tests]
+       |                  |---> test.js
+       |
        |---> [src] // Angular code
                 |---> [app]
                         |---> [CreateUser Component]
@@ -84,13 +84,13 @@ The application used 2 major data structures, stored in a mongo database:
 ```mermaid
 [src]
   |---> [app]
-  |---> [CreateUser Component]
-  |---> [Dashboard Component]
-  |---> [Login Component]
-  |---> [Home Component]
-  |---> [PageNotFound Component]
-  |---> [Services]
-            |---> socket.service.js
+          |---> [CreateUser Component]
+          |---> [Dashboard Component]
+          |---> [Login Component]
+          |---> [Home Component]
+          |---> [PageNotFound Component]
+          |---> [Services]
+                    |---> socket.service.js
 ```
 
 - CreateUser Component: Contains relevent functions for admins to see a list of all users, change their permissions, and create new users to the systems, and uploading user profile images.
