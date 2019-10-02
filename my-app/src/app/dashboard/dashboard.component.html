@@ -1,4 +1,4 @@
-<h1>Dashboard</h1>
+<h1 id="Dashboard">Dashboard</h1>
 <h5>Welcome, {{usernameUser}} ({{ statusUser }})!</h5>
 <br>
 
@@ -29,8 +29,8 @@
           </div>
           <br>
           <!-- Buttons to invite / remove from group -->
-          <button type="submit" class="btn btn-primary btn-small" (click)="addUserToGroup(selectedUserManageG, selectedGroupManageG)">Invite to Group</button>
-          <button type="submit" class="btn btn-danger btn-small" (click)="removeUserFromGroup(selectedUserManageG, selectedGroupManageG)">Remove from Group</button>
+          <button id="groupInviteTo" type="submit" class="btn btn-primary btn-small" (click)="addUserToGroup(selectedUserManageG, selectedGroupManageG)">Invite to Group</button>
+          <button id="groupRemoveFrom" type="submit" class="btn btn-danger btn-small" (click)="removeUserFromGroup(selectedUserManageG, selectedGroupManageG)">Remove from Group</button>
         </div>
     </div>
 
