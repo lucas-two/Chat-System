@@ -1,9 +1,6 @@
 module.exports = (MongoClient,url,dbName,app) => {
   app.post('/removeFromGroup',function(req,res){
 
-    // Debugging
-    console.log('api-remove-from-group hit angular');
-
     // Error handling
     if (!req.body) {
       return res.sendStatus(400);

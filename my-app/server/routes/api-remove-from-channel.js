@@ -1,9 +1,6 @@
 module.exports = (MongoClient,url,dbName,app) => {
   app.post('/removeFromChannel',function(req,res){
 
-    // Debugging
-    console.log('api-remove-from-channel hit angular');
-
     // Error handling
     if (!req.body) {
       return res.sendStatus(400);

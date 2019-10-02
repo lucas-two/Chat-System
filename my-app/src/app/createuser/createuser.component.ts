@@ -29,7 +29,7 @@ export class CreateuserComponent implements OnInit {
   userCreated: boolean; // Flag if user was created successfully
 
   selectedFile = null; // File we have selected
-  imagePath = '';
+  imagePath = ''; // Path of profile picture
 
   constructor(private router: Router, private httpClient: HttpClient) { }
 

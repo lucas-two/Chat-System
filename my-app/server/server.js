@@ -17,6 +17,9 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../dist/imageupload')));
 app.use('/images', express.static(path.join(__dirname, './userimages')));
 
+// Exporting app
+module.exports = app;
+
 // URL of mongodb
 const url = 'mongodb://localhost:27017';
 
@@ -32,14 +35,14 @@ sockets.connect(io, PORT);
 require('./listen.js')(http);
 
 // Importing APIs
-require('./routes/api-login.js')(MongoClient,url,dbName,app);
-require('./routes/api-add-user.js')(MongoClient,url,dbName,app);
-require('./routes/api-get-users.js')(MongoClient,url,dbName,app);
-require('./routes/api-get-groups.js')(MongoClient,url,dbName,app);
+require('./routes/api-login.js')(MongoClient,url,dbName,app); // !
+require('./routes/api-add-user.js')(MongoClient,url,dbName,app); // !
+require('./routes/api-get-users.js')(MongoClient,url,dbName,app); // !
+require('./routes/api-get-groups.js')(MongoClient,url,dbName,app); // !
 require('./routes/api-add-group.js')(MongoClient,url,dbName,app);
 require('./routes/api-add-channel.js')(MongoClient,url,dbName,app);
 require('./routes/api-update-status.js')(MongoClient,url,dbName,app);
-require('./routes/api-delete-user.js')(MongoClient,url,dbName,app);
+require('./routes/api-delete-user.js')(MongoClient,url,dbName,app); // !
 require('./routes/api-add-to-group.js')(MongoClient,url,dbName,app);
 require('./routes/api-add-to-channel.js')(MongoClient,url,dbName,app);
 require('./routes/api-remove-from-group.js')(MongoClient,url,dbName,app);

@@ -1,9 +1,6 @@
 module.exports = (MongoClient,url,dbName,app) => {
   app.post('/deleteUser',function(req,res){
 
-    // Debugging
-    console.log('api-delete-user hit angular');
-
     // Error handling
     if (!req.body) {
       return res.sendStatus(400);

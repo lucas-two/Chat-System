@@ -1,9 +1,6 @@
 module.exports = (MongoClient,url,dbName,app) => {
   app.get('/getUsers',function(req,res){
 
-    // Debugging
-    console.log('api-get-users hit angular');
-
     // Error handling
     if (!req.body) {
       return res.sendStatus(400);

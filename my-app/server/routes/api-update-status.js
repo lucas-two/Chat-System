@@ -1,9 +1,6 @@
 module.exports = (MongoClient,url,dbName,app) => {
   app.post('/updateStatus',function(req,res){
 
-    // Debugging
-    console.log('api-update-status hit angular');
-
     // Error handling
     if (!req.body) {
       return res.sendStatus(400);

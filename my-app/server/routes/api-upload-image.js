@@ -1,9 +1,6 @@
 module.exports = (MongoClient,url,dbName,app,formidable) => {
   app.post('/imageUpload',function(req,res){
 
-    // Debugging
-    console.log('api-image-upload hit angular');
-
     // Error handling
     if (!req.body) {
       return res.sendStatus(400);

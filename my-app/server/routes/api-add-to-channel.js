@@ -1,9 +1,6 @@
 module.exports = (MongoClient,url,dbName,app) => {
   app.post('/addToChannel',function(req,res){
 
-    // Debugging
-    console.log('api-add-to-channel hit angular');
-
     // Error handling
     if (!req.body) {
       return res.sendStatus(400);
