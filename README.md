@@ -5,7 +5,6 @@
 
 ### Testing
 <b> Server Side </b>
-(Navigate to the server directory)
 1. Navigate to `my-app/server` directory
 2. In CMD run  `npm run-script test`
 
