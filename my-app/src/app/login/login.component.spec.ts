@@ -22,4 +22,18 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display page title', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.card-title').textContent).toContain('Sign in');
+  });
+
+  it('should have login button', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('button').textContent).toContain('Login');
+  });
+
+  it('should have a login function', () => {
+    expect(component.LoginUser).toBeTruthy();
+  });
 });

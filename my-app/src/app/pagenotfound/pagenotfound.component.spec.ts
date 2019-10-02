@@ -22,4 +22,14 @@ describe('PagenotfoundComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display 404 error title', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('Opps!');
+  });
+
+  it('should display 404 error message', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('p').textContent).toContain('Sorry, an error has occured, requested page not found!');
+  });
 });

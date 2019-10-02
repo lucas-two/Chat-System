@@ -31,10 +31,9 @@ describe('workspace-project App', () => {
     page.getPwdInput().sendKeys('123');
     page.getLoginBtn().click();
     browser.waitForAngular();
-    page.getGroupInviteToBtn().click();
+    // ERROR NOTE: The below test seems to not work
+    expect(page.getDashboardtitle()).toEqual('Dashboard');
   });
-
-
 
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser

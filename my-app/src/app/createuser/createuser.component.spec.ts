@@ -22,4 +22,15 @@ describe('CreateuserComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display home page title', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('Manage Users');
+  });
+
+  it('should have status checking functions', () => {
+    expect(component.isGroupAssis).toBeTruthy();
+    expect(component.isGroupAdmin).toBeTruthy();
+    expect(component.isSuperAdmin).toBeTruthy();
+  });
 });
