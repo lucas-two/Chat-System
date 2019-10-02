@@ -180,7 +180,7 @@ describe('Server test', () => {
     describe('/addToGroup', () => {
       it('should add user to group if not already memember', (done) => {
         chai.request(app).post('/addToGroup').type('form')
-          .send({user: 'testUser', group: 'testGroup'})
+          .send({user: 'testUser', group: {groupName: 'testGroup', channels: []}})
             .end((err, res) => {
               res.should.have.status(200);
               assert.equal(res.body, false);
@@ -190,7 +190,7 @@ describe('Server test', () => {
 
       it('should not add user to group if already member', (done) => {
         chai.request(app).post('/addToGroup').type('form')
-          .send({user: 'testUser', group: 'testGroup'})
+          .send({user: 'testUser', group: {groupName: 'testGroup', channels: []}})
             .end((err, res) => {
               res.should.have.status(200);
               assert.equal(res.body, true);

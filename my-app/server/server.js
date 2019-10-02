@@ -39,12 +39,12 @@ require('./routes/api-login.js')(MongoClient,url,dbName,app); // !
 require('./routes/api-add-user.js')(MongoClient,url,dbName,app); // !
 require('./routes/api-get-users.js')(MongoClient,url,dbName,app); // !
 require('./routes/api-get-groups.js')(MongoClient,url,dbName,app); // !
-require('./routes/api-add-group.js')(MongoClient,url,dbName,app);
-require('./routes/api-add-channel.js')(MongoClient,url,dbName,app);
-require('./routes/api-update-status.js')(MongoClient,url,dbName,app);
+require('./routes/api-add-group.js')(MongoClient,url,dbName,app); // !
+require('./routes/api-add-channel.js')(MongoClient,url,dbName,app); // !
+require('./routes/api-update-status.js')(MongoClient,url,dbName,app); // !
 require('./routes/api-delete-user.js')(MongoClient,url,dbName,app); // !
-require('./routes/api-add-to-group.js')(MongoClient,url,dbName,app);
-require('./routes/api-add-to-channel.js')(MongoClient,url,dbName,app);
+require('./routes/api-add-to-group.js')(MongoClient,url,dbName,app); // !
+require('./routes/api-add-to-channel.js')(MongoClient,url,dbName,app); // !
 require('./routes/api-remove-from-group.js')(MongoClient,url,dbName,app);
 require('./routes/api-remove-from-channel.js')(MongoClient,url,dbName,app);
 require('./routes/api-delete-group.js')(MongoClient,url,dbName,app);

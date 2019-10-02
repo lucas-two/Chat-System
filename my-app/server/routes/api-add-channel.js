@@ -20,10 +20,10 @@ module.exports = (MongoClient,url,dbName,app) => {
       const collection = db.collection('groups'); // Use the GROUPS collection
 
       // Check if channel already exists
-      collection.find({"groupName": channelObj.group}, {"channels": [channelObj.channel]}).count((err,count)=>{
+      collection.find({"groupName": channelObj.group, "channels": channelObj.channel}).count((err,count)=>{
 
         // If there are no duplicates
-        if (count == 1) {
+        if (count == 0) {
           // Create channel
           collection.updateOne({"groupName" : channelObj.group}, {$push: {"channels": channelObj.channel}}).then(() => {
             existing = false;
