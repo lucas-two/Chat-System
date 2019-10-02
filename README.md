@@ -51,7 +51,7 @@
                         |---> [Services]
                                   |---> socket.service.js
 ```
-The organisation of the repository aims to be clear and easy to navigate. It stores a folder called ‘my-app’ which contains all source files related to the Angular project. In addition, relevant node package manager module (NPM) files are stored, allowing the user to quickly understand NPM dependencies. Lastly, a README file is provided to give brief documentation about the project. When the repository is cloned, it can run by entering `ng serve` within the ‘my-app’ directory and `node server.js` within the ‘my-app/server’ directory.
+The organisation of the repository aims to be clear and easy to navigate. It stores a folder called ‘my-app’ which contains all source files related to the Angular project. In addition, relevant node package manager module (NPM) files are stored, allowing the user to quickly understand NPM dependencies. Lastly, a README file is provided to give brief documentation about the project. See *Setup* for how to run the program.
 
 #### Usage
 Throughout the project, Git commands were frequently used to provide version control. Firstly, git clone was used to initially download the repository from GitHub onto my local machine. In addition, while updating the application, frequent usage of git add, commit and push were used to save progress and milestones. Lastly, 2 branches were created and checked out while developing specific features in the application, helping to better categorise major additions being made.
