@@ -1,10 +1,9 @@
 # Chat System
 ###### Lucas Guertjens - s5132841 - Web Programming
 
-## Documentation
+## How to Run
 
-### Running Program
-
+### Setup
 1. Clone Repository.
 2. Navigate to `Chat-system` directory.
 3. Enter `npm init`.
@@ -13,7 +12,7 @@
 6. Enter `npm init`.
 7. Start front end by entering `ng serve --open`.
 
-### Running Tests
+### Tests
 <b> Server Side </b>
 1. Navigate to `my-app/server` directory
 2. In CMD run  `npm run-script test`
@@ -25,6 +24,8 @@
 <b> E2E </b>
 1. Navigate to `my-app` directory
 2. In CMD run  `ng e2e`
+
+## Documentation
 
 ### Git
 #### Organisation
